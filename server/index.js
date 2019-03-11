@@ -25,7 +25,7 @@ passport.use(
     {
       consumerKey: process.env.TWITTER_API_KEY,
       consumerSecret: process.env.TWITTER_API_SECRET_KEY,
-      callbackURL: 'http://127.0.0.1:3000/callback',
+      callbackURL: process.env.callbackURL,
     },
     function(token, tokenSecret, profile, done) {
       profile.access_token = token;

@@ -3,7 +3,7 @@
     <div>twitter user id: {{ user.id }}</div>
     <p>{{ user }}</p>
     <div>error: {{ error }}</div>
-    <a href="http://127.0.0.1:3000/server/logout">logout</a>
+    <a v-bind:href="this.logoutUrl">logout</a>
   </section>
 </template>
 
@@ -15,10 +15,13 @@ export default {
     return {
       user: {},
       error: null,
+      logoutUrl: process.env.baseUrl + "/server/logout",
+      callbackUrl: process.env.baseUrl + "/server/auth/twitter/callback"
     };
   },
   mounted() {
-    axios.get('http://127.0.0.1:3000/server/auth/twitter/callback', {
+    console.log(this.callbackUrl)
+    axios.get(this.callbackUrl, {
       params: this.$route.query,
     }).then(res => {
       this.user = res.data.user;

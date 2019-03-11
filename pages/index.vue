@@ -12,7 +12,7 @@
 
         <div class="links">
           <a
-            href="http://127.0.0.1:3000/server/auth/twitter"
+            v-bind:href="this.loginUrl"
             class="button--grey">Twitter Login</a>
         </div>
       </div>
@@ -75,11 +75,14 @@ export default {
   data() {
     return {
       words: [],
+      loginUrl: process.env.baseUrl + "/server/auth/twitter",
       testResult: {},
-      testTweet: '{"background_image_url": "https://yamabluesky.files.wordpress.com/2018/05/20170715_170716_0043.jpg","text": "僕は従来のヒマラヤ登山で成功した登山は、不思議なことにBC出発後最終キャンプまで、ほとんど一睡もしないで登頂に向かった時だけだったよ！ゆっくりと余裕があって登って行った時はほとんど失敗だったよ。","user_image_url": "","user_name": "山田昇"}'
+      testTweet: '{"background_image_url": "https://yamabluesky.files.wordpress.com/2018/05/20170715_170716_0043.jpg","text": "僕は従来のヒマラヤ登山で成功した登山は、不思議なことにBC出発後最終キャンプまで、ほとんど一睡もしないで登頂に向かった時だけだったよ！ゆっくりと余裕があって登って行った時はほとんど失敗だったよ。","user_image_url": "","user_name": "山田昇"}',
     }
   },
   async mounted() {
+    console.log(this.loginUrl)
+    console.log(process.env.baseUrl)
     const response = await axios.get("http://localhost:8080/api/v1/words")
     this.words = response.data
   },

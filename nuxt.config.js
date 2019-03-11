@@ -10,6 +10,7 @@ module.exports = {
     '@nuxtjs/vuetify'
   ],
 
+
   vuetify: {
     theme: {
       primary: '#3f51b5',
@@ -54,7 +55,9 @@ module.exports = {
   },
   env: {
     TWITTER_API_KEY,
-    TWITTER_API_SECRET_KEY
+    TWITTER_API_SECRET_KEY,
+    baseUrl: process.env.BASE_URL || 'http://127.0.0.1:3000',
+    callbackURL: process.env.CALLBACK_URL || 'http://127.0.0.1:3000/callback'
   },
   serverMiddleware: ['~/server'],
 }
