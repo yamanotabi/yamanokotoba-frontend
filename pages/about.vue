@@ -20,13 +20,6 @@ export default {
   components: {
     AppLogo
   },
-  asyncData ({ params }) {
-    return axios
-      .get("http://localhost:8080/api/v1/words")
-      .then((response) => {
-        return { words : response.data }
-      })
-  },
   data() {
     return {
     }
