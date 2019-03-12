@@ -12,7 +12,7 @@
 
         <div class="links">
           <a
-            v-bind:href="this.loginUrl"
+            href="https://fathomless-oasis-51387.herokuapp.com/server/auth/twitter"
             class="button--grey">Twitter Login</a>
         </div>
       </div>
