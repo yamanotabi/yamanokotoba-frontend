@@ -12,7 +12,7 @@
 
         <div class="links">
           <a
-            href="https://fathomless-oasis-51387.herokuapp.com/server/auth/twitter"
+            href="https://vigilant-hawking-2f370b.netlify.com/server/auth/twitter"
             class="button--grey">Twitter Login</a>
         </div>
       </div>

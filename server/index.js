@@ -25,7 +25,7 @@ passport.use(
     {
       consumerKey: process.env.TWITTER_API_KEY,
       consumerSecret: process.env.TWITTER_API_SECRET_KEY,
-      callbackURL: "https://fathomless-oasis-51387.herokuapp.com/callback",
+      callbackURL: "https://vigilant-hawking-2f370b.netlify.com/callback",
     },
     function(token, tokenSecret, profile, done) {
       profile.access_token = token;
