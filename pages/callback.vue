@@ -3,7 +3,7 @@
     <div>twitter user id: {{ user.id }}</div>
     <p>{{ user }}</p>
     <div>error: {{ error }}</div>
-    <a href="https://vigilant-hawking-2f370b.netlify.com/server/logout">logout</a>
+    <a href="https://fathomless-oasis-51387.herokuapp.com/server/logout">logout</a>
   </section>
 </template>
 
@@ -20,7 +20,7 @@ export default {
     };
   },
   mounted() {
-    axios.get("https://vigilant-hawking-2f370b.netlify.com/server/auth/twitter/callback", {
+    axios.get("https://fathomless-oasis-51387.herokuapp.com/server/auth/twitter/callback", {
       params: this.$route.query,
     }).then(res => {
       this.user = res.data.user;
