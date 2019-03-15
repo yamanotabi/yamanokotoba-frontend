@@ -84,13 +84,6 @@ export default {
     }
   },
 
-  async fetch({ store }) {
-    let { session } = await axios.get(process.env.baseURL + "/server/session")
-    if (session != null) {
-      store.commit('login', session.data.user)
-    }
-  },
-  
   async mounted() {
     const response = await axios.get("http://localhost:8080/api/v1/words")
     this.words = response.data
