@@ -7,9 +7,13 @@ module.exports = {
   ** Headers of the page
   */
   modules: [
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxtjs/axios'
   ],
 
+  router: {
+    middleware: 'session'
+  },
 
   vuetify: {
     theme: {
@@ -21,7 +25,7 @@ module.exports = {
   },
 
   head: {
-    title: 'yamagen-frontend',
+    title: '山の名言',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -56,7 +60,7 @@ module.exports = {
   env: {
     TWITTER_API_KEY,
     TWITTER_API_SECRET_KEY,
-    baseUrl: process.env.BASE_URL || 'http://127.0.0.1:3000',
+    baseURL: process.env.BASE_URL || 'http://127.0.0.1:3000',
     callbackURL: process.env.CALLBACK_URL || 'http://127.0.0.1:3000/callback'
   },
   serverMiddleware: ['~/server'],

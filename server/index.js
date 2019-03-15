@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
 
@@ -19,13 +20,25 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// sessionの設定
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: 'auto',
+    maxage: 1000 * 60 * 60 * 24
+  }
+}))
+
 // twitter
 passport.use(
   new TwitterStrategy(
     {
       consumerKey: process.env.TWITTER_API_KEY,
       consumerSecret: process.env.TWITTER_API_SECRET_KEY,
-      callbackURL: "https://fathomless-oasis-51387.herokuapp.com/callback",
+      callbackURL: process.env.callbackURL
     },
     function(token, tokenSecret, profile, done) {
       profile.access_token = token;
@@ -53,6 +66,10 @@ app.get('/auth/twitter/callback', passport.authenticate('twitter'), (req, res) =
 app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
+});
+
+app.get('/session', (req, res) => {
+  res.json({ user: req.user })
 });
 
 module.exports = {

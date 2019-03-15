@@ -5,16 +5,19 @@
       align-center
     >
       <div class="main">
+        <div v-if="$store.state.user">
+          <p>Login now! : {{ $store.state.user.displayName }}</p>
+        </div>
+        <div v-else class="links">
+          <a
+            v-bind:href="this.loginUrl"
+            class="button--grey">Twitter Login</a>
+        </div>
+
         <h1 class="title">
           Yama Lover's Word
         </h1>
         <button @click="tweet">名言をつぶやく</button>
-
-        <div class="links">
-          <a
-            href="https://fathomless-oasis-51387.herokuapp.com/server/auth/twitter"
-            class="button--grey">Twitter Login</a>
-        </div>
       </div>
       <v-layout v-for="word in words" :key="word.id">
         <v-card
@@ -75,14 +78,20 @@ export default {
   data() {
     return {
       words: [],
-      loginUrl: process.env.baseUrl + "/server/auth/twitter",
+      loginUrl: process.env.baseURL + "/server/auth/twitter",
       testResult: {},
       testTweet: '{"background_image_url": "https://yamabluesky.files.wordpress.com/2018/05/20170715_170716_0043.jpg","text": "僕は従来のヒマラヤ登山で成功した登山は、不思議なことにBC出発後最終キャンプまで、ほとんど一睡もしないで登頂に向かった時だけだったよ！ゆっくりと余裕があって登って行った時はほとんど失敗だったよ。","user_image_url": "","user_name": "山田昇"}',
     }
   },
+
+  async fetch({ store }) {
+    let { session } = await axios.get(process.env.baseURL + "/server/session")
+    if (session != null) {
+      store.commit('login', session.data.user)
+    }
+  },
+  
   async mounted() {
-    console.log(this.loginUrl)
-    console.log(process.env.baseUrl)
     const response = await axios.get("http://localhost:8080/api/v1/words")
     this.words = response.data
   },
@@ -143,6 +152,5 @@ export default {
 .user_name {
   color: white;
 }
-
 </style>
 
