@@ -70,14 +70,13 @@
       </div>
       <tweetModal v-if="showModal" @close="closeModal"></tweetModal>
     </v-container>
-          <div v-if="200 < scrollY">
-            <v-btn ref="button" class="v-btn v-btn--bottom v-btn--floating v-btn--fixed v-btn--right theme--dark blue-grey lighten-1" @click="$vuetify.goTo(0)">
-              <div class="v-btn__content">
-                <i class="v-icon material-icons theme--dark">keyboard_arrow_up</i>
-              </div>
-            </v-btn>
-          </div>
-
+    <div v-if="500 < scrollY">
+      <v-btn ref="button" class="v-btn v-btn--bottom v-btn--floating v-btn--fixed v-btn--right theme--dark blue-grey lighten-1" @click="$vuetify.goTo(0)">
+        <div class="v-btn__content">
+          <i class="v-icon material-icons theme--dark">keyboard_arrow_up</i>
+        </div>
+      </v-btn>
+    </div>
   </div>
 </template>
 
