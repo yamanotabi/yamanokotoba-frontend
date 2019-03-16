@@ -15,6 +15,10 @@ module.exports = {
     middleware: 'session'
   },
 
+  plugins: [
+    { src: '~/plugins/infiniteloading', ssr: true }
+  ],
+
   vuetify: {
     theme: {
       primary: '#3f51b5',

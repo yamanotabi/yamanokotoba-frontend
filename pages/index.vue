@@ -19,6 +19,7 @@
         </h1>
         <button @click="tweet">名言をつぶやく</button>
       </div>
+      <div class="infinite-scroll">
       <v-layout v-for="word in words" :key="word.id">
         <v-card
           class="mx-auto"
@@ -35,11 +36,9 @@
                 mdi-twitter
               </v-icon>
             </v-card-title>
-
             <v-card-text class="headline font-weight-bold">
               {{ word.text }}
             </v-card-text>
-
             <v-card-actions>
               <v-list-tile class="grow">
                 <v-list-tile-avatar color="grey darken-3">
@@ -63,6 +62,16 @@
           </v-img>
         </v-card>
       </v-layout>
+      <div v-if="this.scroll">
+        <no-ssr>
+          <infinite-loading 
+            ref="infiniteLoading" 
+            spinner="spiral"
+            @infinite="infiniteHandler">
+          </infinite-loading>
+        </no-ssr>
+      </div>
+      </div>
     </v-container>
   </div>
 </template>
@@ -75,27 +84,44 @@ export default {
   components: {
     AppLogo
   },
+  name: 'InfiniteScroll',
   data() {
     return {
+      count: 1,
       words: [],
+      list: [],
+      scroll: true,
       loginUrl: process.env.baseURL + "/server/auth/twitter",
-      testResult: {},
-      testTweet: '{"background_image_url": "https://yamabluesky.files.wordpress.com/2018/05/20170715_170716_0043.jpg","text": "僕は従来のヒマラヤ登山で成功した登山は、不思議なことにBC出発後最終キャンプまで、ほとんど一睡もしないで登頂に向かった時だけだったよ！ゆっくりと余裕があって登って行った時はほとんど失敗だったよ。","user_image_url": "","user_name": "山田昇"}',
     }
   },
 
   async mounted() {
     const response = await axios.get("http://localhost:8080/api/v1/words")
-    this.words = response.data
+    this.list = response.data
   },
   methods: {
     async tweet() {
       const config = {
         headers: { 'content-type': 'application/json' }
       }
-      const response = await axios.post("http://localhost:8080/api/v1/words", this.testTweet, config)
-      this.testResult = response.data;
+      // const response = await axios.post("http://localhost:8080/api/v1/words", this.testTweet, config)
       this.$nuxt.$router.replace({ path: '/' })
+    },
+    infiniteHandler() {
+      setTimeout(() => {
+        const temp = []
+        if (this.scroll) {
+          for (let i = this.words.length; i <= this.words.length + 2; i++) {
+            temp.push(this.list[i])
+            if (this.list.length == i + 1) {
+              this.scroll = false;
+              break;
+            }
+          }
+        }
+        this.words = this.words.concat(temp)
+        this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')          
+      }, 1000)
     }
   }
 }
@@ -145,5 +171,6 @@ export default {
 .user_name {
   color: white;
 }
+
 </style>
 

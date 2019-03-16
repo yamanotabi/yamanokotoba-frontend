@@ -17,6 +17,20 @@ export default {
     if (!store.state.auth) {
       return redirect('/')
     }
-  }
+  },
+  name: 'InfiniteScroll',
+  data() {
+    return {
+      count: 20
+    }
+  },
+  methods: {
+    infiniteHandler() {
+      setTimeout(() => {
+        this.count += 20
+        this.$refs.infiniteLoading.stateChanger.loaded()
+      }, 1000)
+    }
+  }  
 }
 </script>
