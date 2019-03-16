@@ -14,9 +14,6 @@ export default async ({ store, route, redirect }) => {
       if (route.path === '/') {
         return redirect('/')
       }
-    } else if (route.path !== '/') {
-      // 無限リダイレクトにならないように、パスが"/"の場合は何もしない
-      return redirect('/')
     }
   }
 }
