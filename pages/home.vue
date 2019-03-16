@@ -3,10 +3,6 @@
     <h1>Home</h1>
     <p>{{ $store.state.user }}</p>
     <br>
-    <a
-      href="/server/logout"
-      class="button--green"
-    >Logout</a>
   </div>
 </template>
 

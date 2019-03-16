@@ -8,12 +8,6 @@
         <div v-if="$store.state.user">
           <p>Login now! : {{ $store.state.user.displayName }}</p>
         </div>
-        <div v-else class="links">
-          <a
-            v-bind:href="this.loginUrl"
-            class="button--grey">Twitter Login</a>
-        </div>
-
         <h1 class="title">
           Yama Lover's Word
         </h1>
@@ -90,8 +84,7 @@ export default {
       count: 1,
       words: [],
       list: [],
-      scroll: true,
-      loginUrl: process.env.baseURL + "/server/auth/twitter",
+      scroll: true
     }
   },
 

@@ -1,8 +1,14 @@
 <template>
   <v-app id="inspire">
-    <v-layout
-      wrap
-    >
+    <div class="auth_button">
+      <div v-if="$store.state.user">
+        <a v-bind:href="this.logoutUrl" class="button--green">Logout</a>
+      </div>
+      <div v-else>
+        <a v-bind:href="this.loginUrl" class="button--grey">Login</a>
+      </div>
+    </div>
+    <v-layout wrap>
       <v-toolbar-side-icon large class="menu_icon" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-navigation-drawer
         v-model="drawer"
@@ -23,9 +29,7 @@
         </v-list>
       </v-navigation-drawer>
     </v-layout>
-    <h1 class="app_title">
-      そこに、山があるから
-    </h1>
+    <h1 class="app_title">そこに、山があるから</h1>
     <nuxt/>
   </v-app>
 </template>
@@ -35,6 +39,8 @@
     data () {
       return {
         drawer: null,
+        logoutUrl: process.env.baseURL + "/server/logout",
+        loginUrl: process.env.baseURL + "/server/auth/twitter",
         items: [
           { title: 'Home', url: '/' },
           { title: 'About', url: '/about' }
@@ -108,9 +114,15 @@ html {
   text-align: center;
 }
 
+.auth_button {
+  margin-top: 1%;  
+  margin-left: auto;
+  width: 150px;
+}
+
 .menu_icon {
   margin-left: 5%;
-  margin-top: 5%;
+  margin-top: 2%;  
 }
 </style>
 
