@@ -1,5 +1,6 @@
 <template>
   <v-app id="inspire">
+    <div class="header">
     <div class="auth_button">
       <div v-if="$store.state.user">
         <a v-bind:href="this.logoutUrl" class="button--green">Logout</a>
@@ -30,6 +31,7 @@
       </v-navigation-drawer>
     </v-layout>
     <h1 class="app_title">そこに、山があるから</h1>
+    </div>
     <nuxt/>
   </v-app>
 </template>

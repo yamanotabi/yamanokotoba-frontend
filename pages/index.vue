@@ -70,6 +70,14 @@
       </div>
       <tweetModal v-if="showModal" @close="closeModal"></tweetModal>
     </v-container>
+          <div v-if="200 < scrollY">
+            <v-btn ref="button" class="v-btn v-btn--bottom v-btn--floating v-btn--fixed v-btn--right theme--dark blue-grey lighten-1" @click="$vuetify.goTo(0)">
+              <div class="v-btn__content">
+                <i class="v-icon material-icons theme--dark">keyboard_arrow_up</i>
+              </div>
+            </v-btn>
+          </div>
+
   </div>
 </template>
 
@@ -88,11 +96,13 @@ export default {
       count: 1,
       words: [],
       list: [],
+      scrollY: 0,
       scroll: true
     }
   },
 
   async mounted() {
+     window.addEventListener('scroll', this.handleScroll)
     const response = await axios.get("http://localhost:8080/api/v1/words")
     this.list = response.data
   },
@@ -103,6 +113,9 @@ export default {
     closeModal() {
         this.showModal = false;
     },
+    handleScroll() {
+      this.scrollY = window.scrollY
+    },    
     async tweet() {
       const config = {
         headers: { 'content-type': 'application/json' }
@@ -169,6 +182,5 @@ export default {
 .user_name {
   color: white;
 }
-
 </style>
 
