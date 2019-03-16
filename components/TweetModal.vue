@@ -3,7 +3,8 @@
     <div class="modal modal-overlay" @click.self="$emit('close')">
       <div class="modal-window">
         <div class="modal-content">
-          <h1>This is Tweet Modal.</h1>
+            <v-textarea  box auto-grow label="山のつぶやき" v-model="text" placeholder="Yama tweet" class="text-area"></v-textarea>
+            <p class="text" style="white-space: pre-line;">{{ text }}</p>
         </div>
       </div>
     </div>
@@ -13,7 +14,11 @@
 <script>
 export default {
     name: 'TweetModal',
-    
+    data() {
+        return {
+            text: null
+        }
+    }
 }
 </script>
 
@@ -39,7 +44,9 @@ export default {
   }
 
   &-content {
-    padding: 10px 20px;
+    position: relative;
+    width: 600px;
+    height 400px;
   }
 
   &-footer {
@@ -73,7 +80,15 @@ export default {
   }
 }
 
-.modal-content {
-    width: 100%;
+.text-area {
+    position: absolute;
+	top: 0;
+    height 30%;
+    width 100%;
+}
+
+.text {
+    bottom: 0;
+    position: absolute;
 }
 </style>
