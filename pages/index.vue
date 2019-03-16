@@ -160,7 +160,6 @@ export default {
 .mx-auto {
   margin-bottom: 90px;
   max-width: 600;
-  max-height: 400;
   width: 600px;
   border-radius: 20px;
 }
