@@ -12,8 +12,8 @@
             round
             color="blue-grey"
             class="white--text"
-            @click="openModal"
-          >山ツイート
+            @click="openModal($store.state.user)"
+          >山のツイート
           </v-btn>
           </div>
         </div>        
@@ -68,7 +68,7 @@
           </infinite-loading>
         </no-ssr>
       </div>
-      <tweetModal v-if="showModal" @close="closeModal"></tweetModal>
+      <tweetModal :user="userInfo" v-if="showModal" @close="closeModal"></tweetModal>
     </v-container>
     <div v-if="500 < scrollY">
       <v-btn ref="button" class="v-btn v-btn--bottom v-btn--floating v-btn--fixed v-btn--right theme--dark blue-grey lighten-1" @click="$vuetify.goTo(0)">
@@ -96,17 +96,19 @@ export default {
       words: [],
       list: [],
       scrollY: 0,
-      scroll: true
+      scroll: true,
+      userInfo: null
     }
   },
 
   async mounted() {
-     window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll)
     const response = await axios.get("http://localhost:8080/api/v1/words")
     this.list = response.data
   },
   methods: {
-    openModal() {
+    openModal(user) {
+      this.userInfo = user;
         this.showModal = true;
     },
     closeModal() {
@@ -114,13 +116,6 @@ export default {
     },
     handleScroll() {
       this.scrollY = window.scrollY
-    },    
-    async tweet() {
-      const config = {
-        headers: { 'content-type': 'application/json' }
-      }
-      // const response = await axios.post("http://localhost:8080/api/v1/words", this.testTweet, config)
-      this.$nuxt.$router.replace({ path: '/' })
     },
     infiniteHandler() {
       setTimeout(() => {

@@ -6,18 +6,43 @@
             <v-textarea  box auto-grow label="山のつぶやき" v-model="text" placeholder="Yama tweet" class="text-area"></v-textarea>
             <p class="text" style="white-space: pre-line;">{{ text }}</p>
         </div>
+        <div class="tweet-button">
+            <v-btn round color="blue-grey" class="white--text" @click="tweet">山のツイート</v-btn>
+        </div>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     name: 'TweetModal',
     data() {
         return {
             text: null
         }
+    },
+    props: {
+      user: Object
+    },
+    methods: {
+        async tweet() {
+            const config = {
+                headers: { 'content-type': 'application/json' }
+            }
+            const newTweet = {
+                "access_token": this.user.access_token,
+                "access_token_secret": this.user.token_secret,
+                "background_image_url": "https://yamabluesky.files.wordpress.com/2019/01/pexels-photo-94258-1.jpg",
+                "text": this.text,
+                "user_image_url": this.user._json.profile_image_url,
+                "user_name": this.user.displayName
+            }
+            const response = await axios.post("http://localhost:8080/api/v1/words", newTweet, config)
+            this.$emit('close')
+        },
     }
 }
 </script>
@@ -90,5 +115,10 @@ export default {
 .text {
     bottom: 0;
     position: absolute;
+}
+
+.tweet-button {
+    margin-left auto;
+    width 140px;
 }
 </style>
