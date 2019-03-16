@@ -11,7 +11,6 @@ export default {
     return {
       user: {},
       error: null,
-      logoutUrl: process.env.baseURL + "/server/logout",
       callbackUrl: process.env.baseURL + "/server/auth/twitter/callback"
     };
   },
@@ -21,17 +20,10 @@ export default {
     }).then(res => {
       const user = res.data.user
       this.$store.commit('login', user)
-      this.$router.push('/home')
+      this.$router.push('/')
     }).catch(err => {
       this.error = err;
     });
   },
 };
 </script>
-
-<style scoped>
-.wrapper {
-  width: 100%;
-  text-align: center;
-}
-</style>

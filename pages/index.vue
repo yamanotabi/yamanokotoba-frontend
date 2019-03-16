@@ -6,56 +6,59 @@
     >
       <div class="main">
         <div v-if="$store.state.user">
-          <p>Login now! : {{ $store.state.user.displayName }}</p>
-        </div>
-        <h1 class="title">
-          Yama Lover's Word
-        </h1>
-        <button @click="tweet">名言をつぶやく</button>
+          <p class="title"> Yama Lover's name is : {{ $store.state.user.displayName }} .</p>
+          <div class="text-xs-center">
+          <v-btn
+            round
+            color="blue-grey"
+            class="white--text"
+            @click="openModal"
+          >山ツイート
+          </v-btn>
+          </div>
+        </div>        
       </div>
       <div class="infinite-scroll">
-      <v-layout v-for="word in words" :key="word.id">
-        <v-card
-          class="mx-auto"
-        >
-          <v-img
-            class="word_image"
-            v-bind:src="word.background_image_url"
+        <v-layout v-for="word in words" :key="word.id">
+          <v-card
+            class="mx-auto"
           >
-            <v-card-title>
-              <v-icon
-                large
-                left
-              >
-                mdi-twitter
-              </v-icon>
-            </v-card-title>
-            <v-card-text class="headline font-weight-bold">
-              {{ word.text }}
-            </v-card-text>
-            <v-card-actions>
-              <v-list-tile class="grow">
-                <v-list-tile-avatar color="grey darken-3">
-                  <v-img
-                    class="elevation-6"
-                    v-bind:src=word.user_image_url
-                  ></v-img>
-                </v-list-tile-avatar>
-
-                <v-list-tile-content>
-                  <v-list-tile-title class="user_name">{{ word.user_name }}</v-list-tile-title>
-                </v-list-tile-content>
-
-                <v-layout
-                  align-center
-                  justify-end
+            <v-img class="word_image" v-bind:src="word.background_image_url">
+              <v-card-title>
+                <v-icon
+                  large
+                  left
                 >
-                </v-layout>
-              </v-list-tile>
-            </v-card-actions>
-          </v-img>
-        </v-card>
-      </v-layout>
+                  mdi-twitter
+                </v-icon>
+              </v-card-title>
+              <v-card-text class="headline font-weight-bold">
+                {{ word.text }}
+              </v-card-text>
+              <v-card-actions>
+                <v-list-tile class="grow">
+                  <v-list-tile-avatar color="grey darken-3">
+                    <v-img
+                      class="elevation-6"
+                      v-bind:src=word.user_image_url
+                    ></v-img>
+                  </v-list-tile-avatar>
+
+                  <v-list-tile-content>
+                    <v-list-tile-title class="user_name">{{ word.user_name }}</v-list-tile-title>
+                  </v-list-tile-content>
+
+                  <v-layout
+                    align-center
+                    justify-end
+                  >
+                  </v-layout>
+                </v-list-tile>
+              </v-card-actions>
+            </v-img>
+          </v-card>
+        </v-layout>
+      </div>
       <div v-if="this.scroll">
         <no-ssr>
           <infinite-loading 
@@ -65,22 +68,23 @@
           </infinite-loading>
         </no-ssr>
       </div>
-      </div>
+      <tweetModal v-if="showModal" @close="closeModal"></tweetModal>
     </v-container>
   </div>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
 import axios from 'axios'
+import tweetModal from '~/components/TweetModal.vue'
 
 export default {
   components: {
-    AppLogo
+    tweetModal
   },
   name: 'InfiniteScroll',
   data() {
     return {
+      showModal: false,
       count: 1,
       words: [],
       list: [],
@@ -93,6 +97,12 @@ export default {
     this.list = response.data
   },
   methods: {
+    openModal() {
+        this.showModal = true;
+    },
+    closeModal() {
+        this.showModal = false;
+    },
     async tweet() {
       const config = {
         headers: { 'content-type': 'application/json' }
@@ -130,10 +140,6 @@ export default {
   letter-spacing: 1px;
 }
 
-.links {
-  padding-top: 15px;
-}
-
 .main {
   margin-bottom: 5%;
   text-align: center;
@@ -149,7 +155,6 @@ export default {
   max-width: 600;
   max-height: 400;
   width: 600px;
-  height: 400px;
   border-radius: 20px;
 }
 

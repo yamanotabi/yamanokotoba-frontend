@@ -26,6 +26,11 @@
     "nuxt": "^1.0.0",
     "passport": "^0.4.0",
     "passport-twitter": "^1.0.4",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0",
+    "pug-plain-loader": "^1.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "vue-infinite-loading": "^2.4.3"
   },
   "devDependencies": {
