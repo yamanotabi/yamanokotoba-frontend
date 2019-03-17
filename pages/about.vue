@@ -1,13 +1,11 @@
 <template>
   <div>
-    <v-container
-      grid-list-xl
-      align-center
-    >
+    <v-container grid-list-xl align-center>
+      <v-layout>
       <div class="about">
         <div class="bg-image"></div>
-
       </div>
+      </v-layout>
     </v-container>
   </div>
 </template>
@@ -27,7 +25,12 @@ export default {
 
 <style>
 .about {
-max-height: 300px;
+  text-align: center;
+  background-color: red;
+  width: 600px;
+  height: 400px;
+  max-width: 600;
+  margin: auto;
 }
 
 </style>

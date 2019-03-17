@@ -1,17 +1,27 @@
 <template>
-  <transition name="modal" appear>
-    <div class="modal modal-overlay" @click.self="$emit('close')">
-      <div class="modal-window">
-        <div class="modal-content">
-            <v-textarea  box auto-grow label="山のつぶやき" v-model="text" placeholder="Yama tweet" class="text-area"></v-textarea>
-            <p class="text" style="white-space: pre-line;">{{ text }}</p>
+    <transition name="modal" appear>
+        <div class="modal modal-overlay" @click.self="$emit('close')">
+            
+                
+                    <div class="modal-window">
+                        <v-container grid-list-xl align-center>
+                            <v-layout>
+                        <div class="modal-content">
+                            <v-textarea  box auto-grow label="山のつぶやき" v-model="text" placeholder="Yama tweet" class="text-area"></v-textarea>
+                            <div class="tweet-image">
+                                <p class="text" style="white-space: pre-line;">{{ text }}</p>
+                            </div>
+                        <div class="tweet-button">
+                            <v-btn round color="blue-grey" class="white--text" @click="tweet">山のツイート</v-btn>
+                        </div>
+                        </div>
+                            </v-layout>
+                        </v-container>
+</div>
+                
+            
         </div>
-        <div class="tweet-button">
-            <v-btn round color="blue-grey" class="white--text" @click="tweet">山のツイート</v-btn>
-        </div>
-      </div>
-    </div>
-  </transition>
+    </transition>
 </template>
 
 <script>
@@ -66,12 +76,13 @@ export default {
     background: #fff;
     border-radius: 4px;
     overflow: hidden;
+    margin auto;
   }
 
   &-content {
     position: relative;
     width: 600px;
-    height 400px;
+    height 500px;
   }
 
   &-footer {
@@ -105,20 +116,23 @@ export default {
   }
 }
 
-.text-area {
-    position: absolute;
-	top: 0;
-    height 30%;
-    width 100%;
-}
-
-.text {
-    bottom: 0;
-    position: absolute;
-}
 
 .tweet-button {
-    margin-left auto;
-    width 140px;
+    margin-left: auto;
+    margin-top: 280px;
+    width: 140px;
+}
+
+.tweet-image {
+    background-color: #f00;
+    border-radius: 20px;
+    width: 90%;
+    height: 57%;
+    top: 108px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
 }
 </style>
