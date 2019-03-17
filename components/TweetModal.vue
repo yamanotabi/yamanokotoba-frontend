@@ -1,25 +1,21 @@
 <template>
     <transition name="modal" appear>
         <div class="modal modal-overlay" @click.self="$emit('close')">
-            
-                
-                    <div class="modal-window">
-                        <v-container grid-list-xl align-center>
-                            <v-layout>
+            <div class="modal-window">
+                <v-container grid-list-xl align-center>
+                    <v-layout>
                         <div class="modal-content">
                             <v-textarea  box auto-grow label="山のつぶやき" v-model="text" placeholder="Yama tweet" class="text-area"></v-textarea>
                             <div class="tweet-image">
                                 <p class="text" style="white-space: pre-line;">{{ text }}</p>
                             </div>
-                        <div class="tweet-button">
-                            <v-btn round color="blue-grey" class="white--text" @click="tweet">山のツイート</v-btn>
+                            <div class="tweet-button">
+                                <v-btn round color="blue-grey" class="white--text" @click="tweet">山のツイート</v-btn>
+                            </div>
                         </div>
-                        </div>
-                            </v-layout>
-                        </v-container>
-</div>
-                
-            
+                    </v-layout>
+                </v-container>
+            </div>
         </div>
     </transition>
 </template>
