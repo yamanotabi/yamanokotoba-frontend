@@ -1,6 +1,8 @@
 require('dotenv').config();
 const { TWITTER_API_KEY } = process.env.TWITTER_API_KEY
 const { TWITTER_API_SECRET_KEY } = process.env.TWITTER_API_SECRET_KEY
+const { AWS_API_KEY } = process.env.AWS_API_KEY
+const { AWS_SECRET_KEY } = process.env.AWS_SECRET_KEY
 
 module.exports = {
   /*
@@ -16,7 +18,8 @@ module.exports = {
   },
 
   plugins: [
-    { src: '~/plugins/infiniteloading', ssr: true }
+    { src: '~/plugins/infiniteloading', ssr: true },
+    { src: '~/plugins/axios', ssr: true },
   ],
 
   vuetify: {
@@ -64,6 +67,8 @@ module.exports = {
   env: {
     TWITTER_API_KEY,
     TWITTER_API_SECRET_KEY,
+    AWS_API_KEY,
+    AWS_SECRET_KEY,
     baseURL: process.env.BASE_URL || 'http://127.0.0.1:3000',
     callbackURL: process.env.CALLBACK_URL || 'http://127.0.0.1:3000/callback'
   },

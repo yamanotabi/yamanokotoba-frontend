@@ -30,7 +30,7 @@
         </v-list>
       </v-navigation-drawer>
     </v-layout>
-    <h1 class="app_title">そこに、山があるから</h1>
+    <h1 class="app_title">山の名言</h1>
     </div>
     <nuxt/>
   </v-app>
@@ -125,5 +125,9 @@ html {
 .menu_icon {
   margin-left: 5%;
   margin-top: 2%;  
+}
+
+.theme--light.v-input:not(.v-input--is-disabled) input, .theme--light.v-input:not(.v-input--is-disabled) textarea {
+  color: white;
 }
 </style>
