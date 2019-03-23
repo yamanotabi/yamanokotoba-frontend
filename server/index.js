@@ -83,7 +83,7 @@ app.get('/upload', (req, res) => {
 const aws = require('aws-sdk');
 const AWS_API_KEY = process.env.AWS_API_KEY;
 const AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
-const BUCKET = "yamagen-develop";
+const BUCKET = "yamatabi-develop";
 
 aws.config.update({
   accessKeyId: AWS_API_KEY,

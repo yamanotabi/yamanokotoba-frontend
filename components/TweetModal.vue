@@ -30,14 +30,15 @@ export default {
             id: '0',
             text: null,
             defaultImageUrl: null,
-            imageObject: null
+            imageObject: null,
+            imageUrl: null
         }
     },
     mounted() {
         // TODO: get from S3
         const defaultImageUrl = "https://yamabluesky.files.wordpress.com/2019/03/top-background-image-min-min-min.jpg"
-        this.imageObject = defaultImageUrl
         this.defaultImageUrl = defaultImageUrl
+        this.imageObject = defaultImageUrl
     },
 
     props: {
@@ -45,35 +46,31 @@ export default {
     },
     methods: {
         // upload image
-        uploadImage() {
+        uploadImage(file) {
             return axios.get(process.env.baseURL + '/server/upload', {
             params: {
-                filename: this.imageObject.name,
-                filetype: this.imageObject.type
+                filename: file.name,
+                filetype: file.type
             }
             }).then(res => {
             const options = {
                 headers: {
-                'Content-Type': this.imageObject.type
+                'Content-Type': file.type
                 }
             };
-            return axios.put(res.data.url, this.imageObject, options);
+            return axios.put(res.data.url, file, options);
             }).then(res => {
                 const {name} = res.config.data;
                 return {
                     name,
                     isUploading: true,
-                    url: `https://yamagen-develop.s3.amazonaws.com/${this.imageObject.name}`
+                    url: `https://yamatabi-develop.s3.amazonaws.com/${file.name}`
                 };
             });
         },
 
         // tweet
         async tweet() {
-            if (this.imageObject != this.defaultImageUrl) {
-                const res = await this.uploadImage()
-                console.log(this.uploadImage())
-            } else {
             const config = {
                 headers: { 'content-type': 'application/json' }
             }
@@ -86,18 +83,17 @@ export default {
                 "user_name": this.user.displayName
             }
             // const response = await axios.post("http://localhost:8080/api/v1/words", newTweet, config)
-            }
             this.$emit('close')
         },
 
         // file select
-        onFileChange(e) {
+        async onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length)
                 return;
-            this.createImage(files[0]);
+            await this.createImage(files[0]);
         },
-        createImage(file) {
+        async createImage(file) {
             var imageObject = new Image();
             var reader = new FileReader();
             var vm = this;
@@ -105,7 +101,8 @@ export default {
             reader.onload = (e) => {
                 vm.imageObject = e.target.result;
             };
-            this.imageObject = file;
+            const res = await this.uploadImage(file)
+            console.log(res)
             reader.readAsDataURL(file);
         },
         removeImage: function (e) {
