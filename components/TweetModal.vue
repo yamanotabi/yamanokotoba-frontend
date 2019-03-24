@@ -2,12 +2,13 @@
     <transition name="modal" appear>
         <div class="modal modal-overlay" @click.self="$emit('close')">
             <div class="modal-window">
-                <p class ="message" v-if="message != null">{{ message }}</p>
                 <v-layout>
                     <div class="modal-content" :style="{ backgroundImage: 'url(' + imageObject + ')'}">
                         <div class="form-area">
                             <v-textarea class="headline font-weight-bold" color="white" label="山のつぶやき" v-model="text" ></v-textarea>
                         </div>
+                        <p class ="error-message" v-if="message != null">{{ message }}</p>
+
                         <div class="tweet-button">
                             <v-btn round color="blue-grey" class="white--text" @click="tweet">山のツイート</v-btn>
                         </div>
@@ -112,6 +113,9 @@ export default {
             this.createImage(files[0]);
         },
         createImage(file) {
+            if (this.message != null) {
+                this.message = null
+            }
             var imageObject = new Image();
             var reader = new FileReader();
             var vm = this;
@@ -185,6 +189,11 @@ export default {
   }
 }
 
+.error-message {
+    color: red;
+    margin-left: 7%;
+}
+
 .form-area {
     width: 500px;
     height: auto;
@@ -197,18 +206,17 @@ export default {
     display: inline-block;
     vertical-align: middle;
     margin-left: 7%;
-    margin-top: 30px;
+    margin-top: 5px;
 }
 
 .input-file {
     width:100px;
     vertical-align: middle;
     display: inline-block;
-    margin-top: 30px;
+    margin-top: 5px;
 }
 
 label {
-    
     display: block;
     float:left;
     width: 32px;
@@ -217,6 +225,5 @@ label {
     border-radius: 6px;
     background-repeat:no-repeat;
     background-size:cover;
-
 }
 </style>
