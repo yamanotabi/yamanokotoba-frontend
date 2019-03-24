@@ -31,6 +31,7 @@ export default {
             text: null,
             defaultImageUrl: null,
             imageObject: null,
+            uploadTarget: null,
             imageUrl: null
         }
     },
@@ -71,29 +72,37 @@ export default {
 
         // tweet
         async tweet() {
+            if (this.uploadTarget != null) {
+                const res = await this.uploadImage(this.uploadTarget)
+                this.imageUrl = res.url
+            } else {
+                this.imageUrl = this.defaultImageUrl
+            }
             const config = {
                 headers: { 'content-type': 'application/json' }
             }
+
             const newTweet = {
                 "access_token": this.user.access_token,
                 "access_token_secret": this.user.token_secret,
-                "background_image_url": this.imageObject,
+                "background_image_url": this.imageUrl,
                 "text": this.text,
                 "user_image_url": this.user._json.profile_image_url,
                 "user_name": this.user.displayName
             }
-            // const response = await axios.post("http://localhost:8080/api/v1/words", newTweet, config)
+            const response = await axios.post("http://localhost:8080/api/v1/words", newTweet, config)
             this.$emit('close')
         },
 
         // file select
-        async onFileChange(e) {
+        onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length)
                 return;
-            await this.createImage(files[0]);
+            this.uploadTarget = files[0]                
+            this.createImage(files[0]);
         },
-        async createImage(file) {
+        createImage(file) {
             var imageObject = new Image();
             var reader = new FileReader();
             var vm = this;
@@ -101,12 +110,7 @@ export default {
             reader.onload = (e) => {
                 vm.imageObject = e.target.result;
             };
-            const res = await this.uploadImage(file)
-            console.log(res)
             reader.readAsDataURL(file);
-        },
-        removeImage: function (e) {
-        this.imageObject = '';
         }
     }
 }
@@ -143,6 +147,10 @@ export default {
     -moz-background-size:cover;
     background-size:cover;
   }
+
+  &-content::before {
+      background: rgba(0,0,0,0.5);
+  }
 }
 
 // オーバーレイのトランジション
@@ -178,7 +186,6 @@ export default {
 }
 
 .tweet-button {
-    margin-top: 50px;
     margin-left: 7%;
 }
 

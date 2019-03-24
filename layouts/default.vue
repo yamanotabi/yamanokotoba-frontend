@@ -129,5 +129,6 @@ html {
 
 .theme--light.v-input:not(.v-input--is-disabled) input, .theme--light.v-input:not(.v-input--is-disabled) textarea {
   color: white;
+  line-height: 28px;
 }
 </style>
