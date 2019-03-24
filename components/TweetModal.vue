@@ -2,6 +2,7 @@
     <transition name="modal" appear>
         <div class="modal modal-overlay" @click.self="$emit('close')">
             <div class="modal-window">
+                <p class ="message" v-if="message != null">{{ message }}</p>
                 <v-layout>
                     <div class="modal-content" :style="{ backgroundImage: 'url(' + imageObject + ')'}">
                         <div class="form-area">
@@ -11,7 +12,9 @@
                             <v-btn round color="blue-grey" class="white--text" @click="tweet">山のツイート</v-btn>
                         </div>
                         <div class="input-file">
-                            <input type="file" @change="onFileChange">
+                            <label for="file_photo">
+                                <input type="file" @change="onFileChange" style="display:none;" id="file_photo">
+                            </label>
                         </div>
                     </div>
                 </v-layout>
@@ -32,7 +35,8 @@ export default {
             defaultImageUrl: null,
             imageObject: null,
             uploadTarget: null,
-            imageUrl: null
+            imageUrl: null,
+            message: null
         }
     },
     mounted() {
@@ -99,6 +103,11 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length)
                 return;
+            
+            if (files[0].size > 3000000) {
+                this.message = "アップロードできる写真の上限は3MBです。"
+                return;
+            }
             this.uploadTarget = files[0]                
             this.createImage(files[0]);
         },
@@ -111,6 +120,9 @@ export default {
                 vm.imageObject = e.target.result;
             };
             reader.readAsDataURL(file);
+        },
+        removeImage: function (e) {
+            this.imageObject = '';
         }
     }
 }
@@ -147,10 +159,6 @@ export default {
     -moz-background-size:cover;
     background-size:cover;
   }
-
-  &-content::before {
-      background: rgba(0,0,0,0.5);
-  }
 }
 
 // オーバーレイのトランジション
@@ -186,10 +194,29 @@ export default {
 }
 
 .tweet-button {
+    display: inline-block;
+    vertical-align: middle;
     margin-left: 7%;
+    margin-top: 30px;
 }
 
 .input-file {
-    margin-left: 8%;
+    width:100px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+label {
+    
+    display: block;
+    float:left;
+    width: 32px;
+    height: 32px;
+    background-image: url("../assets/icon-camera.png")
+    border-radius: 6px;
+    background-repeat:no-repeat;
+    background-size:cover;
+
 }
 </style>
