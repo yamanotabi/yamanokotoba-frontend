@@ -19,7 +19,7 @@
         </div>        
       </div>
       <div class="infinite-scroll">
-        <v-layout v-for="word in words" :key="word.id">
+        <v-layout v-for="word in words" :key="word.text">
           <v-card
             class="mx-auto"
           >
