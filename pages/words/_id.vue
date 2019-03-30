@@ -59,7 +59,7 @@ export default {
         return {
             meta: [
                 { hid: 'description', name: 'twitter:card', content: "summary_large_image"},
-                { hid: 'description', name: 'twitter:site', content: "@cly7796net"},
+                { hid: 'description', name: 'twitter:site', content: "@shiki_developer"},
                 { hid: 'description', name: 'twitter:title', content: "海の写真"},
                 { hid: 'description', name: 'twitter:description', content: "海がきれいな写真です。"},
                 { hid: 'description', name: 'twitter:image', content: "http://cly7796.net/wp/sample/determine-the-type-of-twitter-card/img2.jpg"}
