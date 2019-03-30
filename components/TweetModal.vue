@@ -51,56 +51,25 @@ export default {
       user: Object
     },
     methods: {
-        // upload image
-        uploadImage(file) {
-            return axios.get(process.env.baseURL + '/server/upload', {
-            params: {
-                filename: file.name,
-                filetype: file.type
-            }
-            }).then(res => {
-            const options = {
-                headers: {
-                'Content-Type': file.type
-                }
-            };
-            return axios.put(res.data.url, file, options);
-            }).then(res => {
-                const {name} = res.config.data;
-                return {
-                    name,
-                    isUploading: true,
-                    url: `https://yamatabi-develop.s3.amazonaws.com/${file.name}`
-                };
-            });
-        },
-
         // tweet
         async tweet() {
-            if (this.uploadTarget != null) {
-                const res = await this.uploadImage(this.uploadTarget)
-                this.imageUrl = res.url
-            } else {
-                this.imageUrl = this.defaultImageUrl
-            }
             const config = {
                 headers: { 'content-type': 'application/json' }
             }
+            var params = new FormData()
+            params.append('file', this.uploadTarget)
+            params.append("access_token", this.user.access_token)
+            params.append('access_token_secret', this.user.token_secret)
+            params.append('text', this.text)
+            params.append('user_image_url', this.user._json.profile_image_url)
+            params.append('user_name', this.user.displayName)
 
-            const newTweet = {
-                "access_token": this.user.access_token,
-                "access_token_secret": this.user.token_secret,
-                "background_image_url": this.imageUrl,
-                "text": this.text,
-                "user_image_url": this.user._json.profile_image_url,
-                "user_name": this.user.displayName
-            }
-            const response = await axios.post("http://localhost:8080/api/v1/words", newTweet, config)
+            const response = await axios.post("http://localhost:8080/api/v1/words", params, config)
             this.$emit('close')
         },
 
         // file select
-        onFileChange(e) {
+        async onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length)
                 return;
@@ -109,7 +78,8 @@ export default {
                 this.message = "アップロードできる写真の上限は3MBです。"
                 return;
             }
-            this.uploadTarget = files[0]                
+
+            this.uploadTarget = files[0]
             this.createImage(files[0]);
         },
         createImage(file) {
