@@ -1,10 +1,7 @@
 <template>
     <div>
         
-        {{ word.background_image_url }}
-        {{ word.text }}
-        {{ word.user_image_url }}
-        {{ word.user_name }}
+        {{ word }}
         <!-- <v-layout>
         <v-card
         class="mx-auto"
@@ -57,6 +54,25 @@ export default {
             word: null
         }
     },
+
+    head () {
+        return {
+            meta: [
+                { hid: 'description', name: 'twitter:card', content: "summary_large_image"},
+                { hid: 'description', name: 'twitter:site', content: "@cly7796net"},
+                { hid: 'description', name: 'twitter:title', content: "海の写真"},
+                { hid: 'description', name: 'twitter:description', content: "海がきれいな写真です。"},
+                { hid: 'description', name: 'twitter:image', content: "http://cly7796.net/wp/sample/determine-the-type-of-twitter-card/img2.jpg"}
+            ]
+        }
+    },
+
+// <meta name="twitter:card" content="summary_large_image" />
+// <meta name="twitter:site" content="@cly7796net" />
+// <meta name="twitter:title" content="海の写真" />
+// <meta name="twitter:description" content="海がきれいな写真です。" />
+// <meta name="twitter:image" content="http://cly7796.net/wp/sample/determine-the-type-of-twitter-card/img2.jpg" />
+
 
     async mounted() {
         const id = this.$route.params.id
