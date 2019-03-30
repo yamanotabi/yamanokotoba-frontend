@@ -15,7 +15,10 @@ export default {
         }
     },
 
-    head () {
+    async head () {
+        const id = this.$route.params.id
+        const response = await axios.get("http://localhost:8080/api/v1/words/" + id)
+        this.word = response.data
         return {
             meta: [
                 { hid: 'card', name: 'twitter:card', content: "summary_large_image"},
@@ -26,13 +29,6 @@ export default {
             ]
         }
     },
-
-    async mounted() {
-        const id = this.$route.params.id
-        const response = await axios.get("http://localhost:8080/api/v1/words/" + id)
-        this.word = response.data
-        console.log(this.word)
-    }
 }
 </script>
 
