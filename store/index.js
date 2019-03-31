@@ -1,5 +1,6 @@
 export const state = () => ({
   user: null,
+  head: null,
   auth: false
 })
 
@@ -11,6 +12,9 @@ export const mutations = {
   logout(state) {
     state.auth = false
     state.user = null
+  },
+  setHead(state, payload) {
+    state.head = payload
   }
 }
 
