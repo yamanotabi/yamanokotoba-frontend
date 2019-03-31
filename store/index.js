@@ -1,6 +1,6 @@
 export const state = () => ({
   user: null,
-  head: null,
+  word: null,
   auth: false
 })
 
@@ -13,8 +13,8 @@ export const mutations = {
     state.auth = false
     state.user = null
   },
-  setHead(state, payload) {
-    state.head = payload
+  setWord(state, payload) {
+    state.word = payload
   }
 }
 
