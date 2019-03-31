@@ -15,10 +15,10 @@ export default {
         }
     },
 
-    head () {
-        // const id = this.$route.params.id
-        // const response = await axios.get("http://localhost:8080/api/v1/words/" + id)
-        // this.word = response.data
+    async head () {
+        const id = this.$route.params.id
+        const response = await axios.get("http://localhost:8080/api/v1/words/" + id)
+        this.word = response.data
 
         return {
             meta: [
