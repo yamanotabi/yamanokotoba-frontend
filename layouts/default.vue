@@ -1,42 +1,44 @@
 <template>
   <v-app id="inspire">
     <div class="header">
-    <div class="auth_button">
-      <div v-if="$store.state.user">
-        <a v-bind:href="this.logoutUrl" class="button--green">Logout</a>
+      <div class="auth_button">
+        <div v-if="$store.state.user">
+          <a v-bind:href="this.logoutUrl" class="button--green">Logout</a>
+        </div>
+        <div v-else>
+          <a v-bind:href="this.loginUrl" class="button--grey">Login</a>
+        </div>
       </div>
-      <div v-else>
-        <a v-bind:href="this.loginUrl" class="button--grey">Login</a>
-      </div>
+      <v-layout wrap>
+        <v-toolbar-side-icon large class="menu_icon" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <v-navigation-drawer
+          v-model="drawer"
+          absolute
+          temporary
+        >
+          <v-list class="pt-0" dense>
+            <v-list-tile
+              v-for="item in items"
+              :key="item.title"
+              @click="handleClick"
+              v-bind:to="item.url"
+            >
+            <v-list-tile-content>
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-navigation-drawer>
+      </v-layout>
+      <h1 class="app_title">山の名言</h1>
     </div>
-    <v-layout wrap>
-      <v-toolbar-side-icon large class="menu_icon" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-navigation-drawer
-        v-model="drawer"
-        absolute
-        temporary
-      >
-        <v-list class="pt-0" dense>
-          <v-list-tile
-            v-for="item in items"
-            :key="item.title"
-            @click="handleClick"
-            v-bind:to="item.url"
-          >
-          <v-list-tile-content>
-            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-          </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-      </v-navigation-drawer>
-    </v-layout>
-    <h1 class="app_title">山の名言</h1>
-    </div>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
     <nuxt/>
   </v-app>
 </template>
 
 <script>
+  import 'vuetify/dist/vuetify.min.css'
   export default {
     data () {
       return {
