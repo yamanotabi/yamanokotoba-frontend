@@ -17,7 +17,7 @@ export default {
 
     async head () {
         const id = this.$route.params.id
-        const response = await axios.get("http://localhost:8080/api/v1/words/" + id)
+        const response = await axios.get(process.env.yamagenApiBaseURL + "/api/v1/words/" + id)
         this.word = response.data
 
         return {

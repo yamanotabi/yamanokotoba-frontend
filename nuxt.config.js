@@ -61,7 +61,8 @@ module.exports = {
     AWS_API_KEY,
     AWS_SECRET_KEY,
     baseURL: process.env.BASE_URL || 'http://127.0.0.1:3000',
-    callbackURL: process.env.CALLBACK_URL || 'http://127.0.0.1:3000/callback'
+    callbackURL: process.env.CALLBACK_URL || 'http://127.0.0.1:3000/callback',
+    yamagenApiBaseURL: process.env.YAMAGEN_API_URL || 'http://127.0.0.1:8080'
   },
   serverMiddleware: ['~/server'],
 }

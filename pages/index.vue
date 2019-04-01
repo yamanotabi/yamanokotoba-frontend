@@ -19,7 +19,7 @@
         </div>        
       </div>
       <div class="infinite-scroll">
-        <v-layout v-for="word in words" :key="word.id">
+        <v-layout v-for="word in words" :key="word.text">
           <v-card
             class="mx-auto"
           >
@@ -103,7 +103,7 @@ export default {
 
   async mounted() {
     window.addEventListener('scroll', this.handleScroll)
-    const response = await axios.get("http://localhost:8080/api/v1/words")
+    const response = await axios.get(process.env.yamagenApiBaseURL + "/api/v1/words")
     this.list = response.data
   },
   methods: {
