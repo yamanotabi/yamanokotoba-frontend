@@ -161,6 +161,7 @@ export default {
   margin-bottom: 90px;
   max-width: 600;
   width: 600px;
+  border-radius: 20px;
 }
 
 .headline.font-weight-bold {
@@ -169,10 +170,6 @@ export default {
 
 .v-responsive__content {
   background-color: rgba(0,0,0,0.5);
-}
-
-.word_image {
-  border-radius: 20px;
 }
 
 .user_name {
