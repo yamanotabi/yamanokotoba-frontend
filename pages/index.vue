@@ -169,6 +169,7 @@ export default {
 }
 
 .v-responsive__content {
+  border-radius: 20px;
   background-color: rgba(0,0,0,0.5);
 }
 
