@@ -101,7 +101,7 @@ export default {
     }
   },
 
-  async mounted() {
+  async created() {
     window.addEventListener('scroll', this.handleScroll)
     const response = await axios.get(process.env.yamagenApiBaseURL + "/api/v1/words")
     this.list = response.data
