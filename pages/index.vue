@@ -32,9 +32,6 @@
                   mdi-twitter
                 </v-icon>
               </v-card-title>
-              <v-card-text class="headline font-weight-bold">
-                {{ word.text }}
-              </v-card-text>
               <v-card-actions>
                 <v-list-tile class="grow">
                   <v-list-tile-avatar color="grey darken-3">
@@ -101,7 +98,7 @@ export default {
     }
   },
 
-  async created() {
+  async beforeCreate() {
     window.addEventListener('scroll', this.handleScroll)
     const response = await axios.get(process.env.yamagenApiBaseURL + "/api/v1/words")
     this.list = response.data
@@ -157,19 +154,20 @@ export default {
   bottom: 0;
 }
 
-.mx-auto {
-  margin-bottom: 90px;
-  max-width: 600;
-  width: 600px;
-  border-radius: 20px;
-}
-
 .headline.font-weight-bold {
   color: white;
 }
 
 .v-responsive__content {
   background-color: rgba(0,0,0,0.5);
+}
+
+.theme--light.v-card {
+  margin-bottom: 90px;
+  max-width: 600;
+  width: 600px;
+
+  border-radius: 20px;
 }
 
 .user_name {
