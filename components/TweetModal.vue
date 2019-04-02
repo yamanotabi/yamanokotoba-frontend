@@ -186,6 +186,10 @@ export default {
     margin-top: 5px;
 }
 
+.theme--light.v-input:not(.v-input--is-disabled) input, .theme--light.v-input:not(.v-input--is-disabled) textarea {
+    color: white;
+}
+
 label {
     display: block;
     float:left;
