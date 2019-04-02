@@ -129,9 +129,8 @@ html {
   margin-top: 2%;  
 }
 
-.theme--light.v-input:not(.v-input--is-disabled) textarea {
-  color: white;
+.theme--light.v-input:not(.v-input--is-disabled) input, .theme--light.v-input:not(.v-input--is-disabled) textarea {
+  color: white !important;
   line-height: 28px;
 }
-
 </style>
