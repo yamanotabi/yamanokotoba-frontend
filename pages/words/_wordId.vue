@@ -16,7 +16,7 @@ export default {
 
     async fetch ({ store, params }) {
         const id = params.wordId
-        const response  = await axios.get(process.env.yamagenApiBaseURL + "/api/v1/words/" + id)
+        const response  = await axios.get(process.env.baseURL + "/api/v1/words/" + id)
         console.log(response.data)
         store.commit('setWord', response.data)
     },

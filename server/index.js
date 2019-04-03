@@ -2,6 +2,16 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
+const axios = require('axios');
+
+const API_BASE_URL = process.env.YAMAGEN_API_URL
+const WORD_API = process.env.V1 + "/words/"
+
+const TWITTER_API_KEY = process.env.TWITTER_API_KEY
+const TWITTER_API_SECRET_KEY = process.env.TWITTER_API_SECRET_KEY
+const CALLBACK_URL = process.env.callbackURL
+
+const SESSION_SECRET = process.env.SESSION_SECRET
 
 const app = express();
 app.use(require('morgan')('combined')); // optional
@@ -22,7 +32,7 @@ app.use(passport.session());
 
 // sessionの設定
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'secret',
+  secret: SESSION_SECRET || 'secret',
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -36,9 +46,9 @@ app.use(session({
 passport.use(
   new TwitterStrategy(
     {
-      consumerKey: process.env.TWITTER_API_KEY,
-      consumerSecret: process.env.TWITTER_API_SECRET_KEY,
-      callbackURL: process.env.callbackURL
+      consumerKey: TWITTER_API_KEY,
+      consumerSecret: TWITTER_API_SECRET_KEY,
+      callbackURL: CALLBACK_URL
     },
     function(token, tokenSecret, profile, done) {
       profile.access_token = token;
@@ -48,6 +58,8 @@ passport.use(
   ),
 );
 
+const wrap = fn => (req, res, next) => fn(req, res, next).catch(next);
+
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -55,7 +67,19 @@ passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
-app.get('/hello', (req, res) => res.send('world'));
+// word
+app.get('/words', wrap(async (req, res) => {
+  let requestURL = API_BASE_URL + WORD_API
+  const response = await axios.get(requestURL)
+  res.status(200).json({ words: response.data })
+}));
+
+app.get('/words/:id', wrap(async (req, res) => {
+  let requestURL = API_BASE_URL + WORD_API + req.params.id
+  console.log(requestURL)
+  const response = await axios.get(requestURL)
+  res.status(200).json({ word: response.data })
+}));
 
 // twitter
 app.get('/auth/twitter', passport.authenticate('twitter'));

@@ -92,9 +92,11 @@ export default {
   },
 
   async beforeCreate() {
-    window.addEventListener('scroll', this.handleScroll)
-    const response = await axios.get(process.env.yamagenApiBaseURL + "/api/v1/words")
-    this.list = response.data
+    if (process.client) {
+      window.addEventListener('scroll', this.handleScroll)
+    }
+    const response = await axios.get(process.env.baseURL + "/server/words")
+    this.list = response.data.words
   },
   methods: {
     openModal(user) {
