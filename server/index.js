@@ -84,6 +84,7 @@ app.get('/words/:id', wrap(async (req, res) => {
 // twitter
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter'), (req, res) => {
+  console.log(req.user)
   res.json({ user: req.user });
 });
 
