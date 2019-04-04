@@ -92,9 +92,9 @@ export default {
   },
 
   async asyncData() {
-    if (process.client) {
-      window.addEventListener('scroll', this.handleScroll)
-    }
+    // if (process.client) {
+    //   window.addEventListener('scroll', this.handleScroll)
+    // }
     const response = await axios.get(process.env.baseURL + "/words")
     return { words: response.data.words }
     // this.list = response.data.words
@@ -110,9 +110,9 @@ export default {
     closeModal() {
         this.showModal = false;
     },
-    handleScroll() {
-      this.scrollY = window.scrollY
-    },
+    // handleScroll() {
+    //   this.scrollY = window.scrollY
+    // },
     // infiniteHandler() {
     //   setTimeout(() => {
     //     const temp = []
