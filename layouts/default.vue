@@ -43,8 +43,8 @@
     data () {
       return {
         drawer: null,
-        logoutUrl: process.env.baseURL + "/server/logout",
-        loginUrl: process.env.baseURL + "/server/auth/twitter",
+        logoutUrl: process.env.baseURL + "/logout",
+        loginUrl: process.env.baseURL + "/auth/twitter",
         items: [
           { title: 'Home', url: '/' },
           { title: 'About', url: '/about' }
