@@ -95,7 +95,7 @@ export default {
     if (process.client) {
       window.addEventListener('scroll', this.handleScroll)
     }
-    const response = await this.$axios.get("/server/words")
+    const response = await this.$axios.get("/words")
     this.list = response.data.words
   },
   methods: {

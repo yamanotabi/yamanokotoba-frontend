@@ -98,6 +98,6 @@ app.get('/session', (req, res) => {
 });
 
 module.exports = {
-  path: '/server',
+  // path: '/server',
   handler: app,
 };

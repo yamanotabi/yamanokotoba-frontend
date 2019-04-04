@@ -15,7 +15,7 @@ export default {
     },
 
     async fetch ({ store, params }) {
-        const response  = await this.$axios.get("/server/words/" + params.wordId)
+        const response  = await this.$axios.get("/words/" + params.wordId)
         store.commit('setWord', response.data)
     },
 
