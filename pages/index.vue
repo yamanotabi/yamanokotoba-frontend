@@ -97,6 +97,9 @@ export default {
     }
     const response = await this.$axios.get("/words")
     this.list = response.data.words
+    for (var i = 0; i < 3; i++) {
+      this.words.push(response.data.words[i])
+    }
   },
   methods: {
     openModal(user) {
