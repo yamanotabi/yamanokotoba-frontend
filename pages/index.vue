@@ -56,7 +56,7 @@
           </v-card>
         </v-layout>
       </div>
-      <div v-if="this.scroll">
+      <!-- <div v-if="this.scroll">
         <no-ssr>
           <infinite-loading 
             ref="infiniteLoading" 
@@ -64,7 +64,7 @@
             @infinite="infiniteHandler">
           </infinite-loading>
         </no-ssr>
-      </div>
+      </div> -->
       <tweetModal :user="userInfo" v-if="showModal" @close="closeModal"></tweetModal>
     </v-container>
   </div>
@@ -91,15 +91,16 @@ export default {
     }
   },
 
-  async beforeCreate() {
+  async asyncData() {
     if (process.client) {
       window.addEventListener('scroll', this.handleScroll)
     }
-    const response = await this.$axios.get("/words")
-    this.list = response.data.words
-    for (var i = 0; i < 3; i++) {
-      this.words.push(response.data.words[i])
-    }
+    const response = await axios.get(process.env.baseURL + "/words")
+    return { words: response.data.words }
+    // this.list = response.data.words
+    // for (var i = 0; i < 3; i++) {
+    //   this.words.push(response.data.words[i])
+    // }
   },
   methods: {
     openModal(user) {
@@ -112,22 +113,22 @@ export default {
     handleScroll() {
       this.scrollY = window.scrollY
     },
-    infiniteHandler() {
-      setTimeout(() => {
-        const temp = []
-        if (this.scroll) {
-          for (let i = this.words.length; i <= this.words.length + 2; i++) {
-            temp.push(this.list[i])
-            if (this.list.length == i + 1) {
-              this.scroll = false;
-              break;
-            }
-          }
-        }
-        this.words = this.words.concat(temp)
-        this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')          
-      }, 1000)
-    }
+    // infiniteHandler() {
+    //   setTimeout(() => {
+    //     const temp = []
+    //     if (this.scroll) {
+    //       for (let i = this.words.length; i <= this.words.length + 2; i++) {
+    //         temp.push(this.list[i])
+    //         if (this.list.length == i + 1) {
+    //           this.scroll = false;
+    //           break;
+    //         }
+    //       }
+    //     }
+    //     this.words = this.words.concat(temp)
+    //     this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')          
+    //   }, 1000)
+    // }
   }
 }
 </script>
