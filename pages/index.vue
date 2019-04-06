@@ -32,9 +32,6 @@
                   mdi-twitter
                 </v-icon>
               </v-card-title>
-              <v-card-text class="headline font-weight-bold">
-                {{ word.text }}
-              </v-card-text>              
               <v-card-actions>
                 <v-list-tile class="grow">
                   <v-list-tile-avatar color="grey darken-3">
