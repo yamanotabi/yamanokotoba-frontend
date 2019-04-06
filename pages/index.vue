@@ -32,6 +32,9 @@
                   mdi-twitter
                 </v-icon>
               </v-card-title>
+              <v-card-text class="headline font-weight-bold">
+                {{ word.text }}
+              </v-card-text>              
               <v-card-actions>
                 <v-list-tile class="grow">
                   <v-list-tile-avatar color="grey darken-3">
@@ -157,10 +160,10 @@ export default {
   color: white;
 }
 
-.v-responsive__content {
-  background-color: rgba(0,0,0,0.5);
+/* .v-responsive__content {
+  background-color: rgba(0,0,0,0.3);
 }
-
+ */
 .theme--light.v-card {
   margin-bottom: 90px;
   max-width: 600;
