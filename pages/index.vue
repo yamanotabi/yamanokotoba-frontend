@@ -6,7 +6,7 @@
     >
       <div class="main">
         <div v-if="$store.state.user">
-          <p class="title"> Yama Lover's name is : {{ $store.state.user.displayName }} .</p>
+          <p class="title"> Yama Lover is : {{ $store.state.user.displayName }} .</p>
           <div class="text-xs-center">
           <v-btn
             round
@@ -88,16 +88,13 @@ export default {
       showModal: false,
       count: 1,
       words: [],
-      list: [],
-      scrollY: 0,
-      scroll: true,
       userInfo: null
     }
   },
 
   head() {
     return {
-      title: '山のことば | 山に関するつぶやきを1枚の写真とともに',
+      title: '山のことば | 山のつぶやきを写真とともに',
       meta: [
         { name: 'twitter:card', content: "summary_large_image" },
         { name: 'twitter:site', content: "@shiki_developer" },
@@ -155,7 +152,7 @@ export default {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  font-size: 18px !important;;
   color: #35495e;
   letter-spacing: 1px;
 }

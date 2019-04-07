@@ -1,27 +1,26 @@
 <template>
-    <transition name="modal" appear>
-        <div class="modal modal-overlay" @click.self="$emit('close')">
-            <div class="modal-window">
-                <v-layout>
-                    <div class="modal-content" :style="{ backgroundImage: 'url(' + imageObject + ')'}">
-                        <div class="form-area">
-                            <v-textarea class="headline font-weight-bold" color="white" label="山のつぶやき" v-model="text" ></v-textarea>
-                        </div>
-                        <p class ="error-message" v-if="message != null">{{ message }}</p>
-
-                        <div class="tweet-button">
-                            <v-btn round color="blue-grey" class="white--text" @click="tweet">山のツイート</v-btn>
-                        </div>
-                        <div class="input-file">
-                            <label for="file_photo">
-                                <input type="file" @change="onFileChange" style="display:none;" id="file_photo">
-                            </label>
-                        </div>
-                    </div>
-                </v-layout>
+  <transition name="modal" appear>
+    <div class="modal modal-overlay" @click.self="$emit('close')">
+      <div class="modal-window">
+        <v-layout>
+          <div class="modal-content" :style="{ backgroundImage: 'url(' + imageObject + ')'}">
+            <div class="form-area">
+              <v-textarea class="headline font-weight-bold" color="white" label="山のつぶやき" v-model="text" ></v-textarea>
             </div>
-        </div>
-    </transition>
+            <p class ="error-message" v-if="message != null">{{ message }}</p>
+            <div class="tweet-button">
+              <v-btn round color="blue-grey" class="white--text" @click="tweet">山のツイート</v-btn>
+            </div>
+            <div class="input-file">
+              <label for="file_photo">
+                <input type="file" @change="onFileChange" style="display:none;" id="file_photo">
+              </label>
+            </div>
+          </div>
+        </v-layout>
+      </div>
+    </div>
+  </transition>
 </template>
 
 <script>

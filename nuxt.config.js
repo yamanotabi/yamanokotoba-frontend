@@ -14,7 +14,7 @@ module.exports = {
 //       async: true
 //     }
 //   ],
-//   title: '山のことば | 山に関するつぶやきを1枚の写真とともに',
+//   title: '山のことば | 山のつぶやきを写真とともに',
 //   titleTemplate: '%s | 山のことば',
 //   meta: [
 //     { charset: 'utf-8' },

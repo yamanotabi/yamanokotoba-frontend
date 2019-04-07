@@ -76,7 +76,6 @@ app.get('/words', wrap(async (req, res) => {
 
 app.get('/words/:id', wrap(async (req, res) => {
   let requestURL = API_BASE_URL + WORD_API + req.params.id
-  console.log(requestURL)
   const response = await axios.get(requestURL)
   res.status(200).json({ word: response.data })
 }));
@@ -84,7 +83,6 @@ app.get('/words/:id', wrap(async (req, res) => {
 // twitter
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter'), (req, res) => {
-  console.log(req.user)
   res.json({ user: req.user });
 });
 
