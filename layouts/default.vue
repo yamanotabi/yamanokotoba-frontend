@@ -40,16 +40,6 @@
             <v-list-tile @click="handleClick" v-bind:to="this.aboutUrl">
               <v-list-tile-content>ABOUT</v-list-tile-content>
             </v-list-tile>
-            <!-- <v-list-tile
-              v-for="item in items"
-              :key="item.title"
-              @click="handleClick"
-              v-bind:href="item.url"
-            >
-            <v-list-tile-content>
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-            </v-list-tile-content>
-            </v-list-tile> -->
           </v-list>
         </v-navigation-drawer>
       </v-layout>

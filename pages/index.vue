@@ -20,12 +20,6 @@
               </v-card-title>
               <v-card-actions>
                 <v-list-tile class="grow">
-                  <!-- <v-list-tile-avatar color="grey darken-3">
-                    <v-img
-                      class="elevation-6"
-                      v-bind:src=word.user_image_url
-                    ></v-img>
-                  </v-list-tile-avatar> -->
                   <a v-bind:href="word.tweet_text" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link">
                     <div class="tweet_button">
                       <img class="tweet_icon" src="../assets/Twitter_Social_Icon_Circle_White.png" style="width: 40px;" />
