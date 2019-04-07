@@ -1,6 +1,14 @@
 <template>
     <div>
-        {{ $store.state.word }}
+        <v-container
+      grid-list-xl
+      align-center
+    >
+        <div class="main">
+            {{ $store.state.word }}
+
+        </div>
+    </v-container>
     </div>
 </template>
 
