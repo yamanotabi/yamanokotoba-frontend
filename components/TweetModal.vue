@@ -57,12 +57,16 @@ export default {
                 headers: { 'content-type': 'application/json' }
             }
             var params = new FormData()
+            // generate random id
+            const id = require('crypto').randomBytes(16).toString('hex')
+            params.append('id', id)
             params.append('file', this.uploadTarget)
             params.append("access_token", this.user.access_token)
             params.append('access_token_secret', this.user.token_secret)
             params.append('text', this.text)
             params.append('user_image_url', this.user._json.profile_image_url_https)
             params.append('user_name', this.user.displayName)
+            params.append('tweet_text', "https://twitter.com/intent/tweet?text=" + this.text.slice(0, 5)  + "...&url=https://yamagen.herokuapp.com/words/" + id + "&hashtags=山のことば")
 
             const response = await axios.post(process.env.yamagenApiBaseURL + "/api/v1/words", params, config)
             this.$emit('close')

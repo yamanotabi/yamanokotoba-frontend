@@ -34,17 +34,21 @@
               </v-card-title>
               <v-card-actions>
                 <v-list-tile class="grow">
-                  <v-list-tile-avatar color="grey darken-3">
+                  <!-- <v-list-tile-avatar color="grey darken-3">
                     <v-img
                       class="elevation-6"
                       v-bind:src=word.user_image_url
                     ></v-img>
-                  </v-list-tile-avatar>
+                  </v-list-tile-avatar> -->
+                  <a v-bind:href="word.tweet_text" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link">
+                    <div class="tweet_button">
+                      <img class="tweet_icon" src="../assets/Twitter_Social_Icon_Circle_White.png" style="width: 40px;" />
+                      <h3 class="tweet_text">twitterに投稿</h3>
+                    </div>
+                  </a>
 
                   <v-list-tile-content>
-                    <v-list-tile-title class="user_name">{{ word.user_name }}</v-list-tile-title>
                   </v-list-tile-content>
-
                   <v-layout
                     align-center
                     justify-end
@@ -168,6 +172,22 @@ export default {
 
 .headline.font-weight-bold {
   color: white;
+}
+
+.tweet_icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tweet_text {
+  margin-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+a {
+  color: white;
+  text-decoration:none;
 }
 
 /* .v-responsive__content {
