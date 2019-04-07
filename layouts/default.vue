@@ -98,7 +98,7 @@ html {
 }
 
 .elevation-6 {
-  display: inline-block;
+  display: inline-block !important;
   vertical-align: middle;
   margin-right: 6px;
   border-radius: 40px;
