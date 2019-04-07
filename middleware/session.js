@@ -8,7 +8,7 @@ export default async ({ store, route, redirect }) => {
 
   if (route.path !== '/callback') {
     // サーバーのsessionからuser情報を取得する
-    const { session } = await axios.get(process.env.baseURL + '/session')
+    const { session } = await axios.get(process.env.baseURL + '/server/session')
     if (session != null) {
       store.commit('login', session.data.user)
       if (route.path === '/') {

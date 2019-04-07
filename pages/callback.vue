@@ -11,7 +11,7 @@ export default {
     return {
       user: {},
       error: null,
-      callbackUrl: process.env.baseURL + "/auth/twitter/callback"
+      callbackUrl: process.env.baseURL + "/server/auth/twitter/callback"
     };
   },
   async mounted() {

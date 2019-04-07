@@ -1,14 +1,11 @@
 <template>
     <div>
-        <v-container
-      grid-list-xl
-      align-center
-    >
-        <div class="main">
-            {{ $store.state.word }}
-
-        </div>
-    </v-container>
+        <v-container grid-list-xl align-center>            
+            <div class="main">
+                {{ $store.state.word }}
+                <br>
+            </div>
+        </v-container>
     </div>
 </template>
 
@@ -23,7 +20,7 @@ export default {
     },
 
     async fetch ({ store, params }) {
-        const response  = await this.$axios.get("/words/" + params.wordId)
+        const response  = await axios.get(process.env.baseURL + "/server/words/" + params.wordId)
         store.commit('setWord', response.data)
     },
 

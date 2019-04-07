@@ -23,7 +23,7 @@ export const actions = {
     return dispatch('getSession')
   },
   async getSession({ commit }) {
-    const session = await this.$axios.get('/session')
+    const session = await this.$axios.get('/server/session')
     if (session.data.user != null) {
       commit('login', session.data.user)
     }

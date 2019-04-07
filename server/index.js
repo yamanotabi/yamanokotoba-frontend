@@ -98,5 +98,6 @@ app.get('/session', (req, res) => {
 });
 
 module.exports = {
+  path: '/server',
   handler: app,
 };
