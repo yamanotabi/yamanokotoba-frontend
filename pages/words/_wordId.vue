@@ -22,6 +22,7 @@ export default {
 
     head () {
         return {
+            title: this.$store.state.word.text,
             meta: [
                 { hid: 'card', name: 'twitter:card', content: "summary_large_image" },
                 { hid: 'site', name: 'twitter:site', content: `${this.$store.state.word.user_name}` },
