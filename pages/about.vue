@@ -3,7 +3,11 @@
     <v-container grid-list-xl align-center>
       <v-layout>
       <div class="about">
-        <div class="bg-image"></div>
+        <p>「そこに山があるから。」</p>
+        <br>
+        <p>山屋は誰もが哲学者</p>
+        <p>登山中に感じたこと、山に対する熱い想いや山あるあるなど、テキストだけでは伝わらない！！</p>
+        <p>そんなあなただけの名言をこのサイトではそんな言葉を写真と一緒につぶやくことができます。</p>
       </div>
       </v-layout>
     </v-container>
@@ -39,11 +43,11 @@ export default {
 <style>
 .about {
   text-align: center;
-  background-color: red;
-  width: 600px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
   max-width: 600;
   margin: auto;
+  font-size: 18px;
 }
 
 </style>

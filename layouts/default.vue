@@ -78,7 +78,7 @@
         logoutUrl: process.env.baseURL + "/server/logout",
         loginUrl: process.env.baseURL + "/server/auth/twitter",
         homeUrl: "/",
-        aboutUrl: "/about"
+        aboutUrl: "/about",
       }
     },
     methods: {
@@ -179,7 +179,7 @@ html {
 }
 
 .text-xs-center {
-    text-align: center!important;
+    text-align: center !important;
     display: inline-block;
     vertical-align: middle;  
 }

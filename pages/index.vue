@@ -46,6 +46,10 @@
           </v-card>
         </v-layout>
       </div>
+      <div class="footer">
+        @2019 <a v-bind:href="this.ownerAccount.url" style="color: black">{{ this.ownerAccount.name }}</a> All Rights Reserved.
+      </div>
+
       <!-- <div v-if="this.scroll">
         <no-ssr>
           <infinite-loading 
@@ -74,7 +78,11 @@ export default {
       showModal: false,
       count: 1,
       words: [],
-      userInfo: null
+      userInfo: null,
+      ownerAccount: {
+        url: process.env.ownerAccountUrl,
+        name: process.env.ownerAccountName 
+      }
     }
   },
 
@@ -188,5 +196,14 @@ a {
 .user_name {
   color: white;
 }
+
+.footer {
+  text-align: center;
+  height: 60px;
+  padding: 10px 20px 30px 20px;
+  position: relative;
+  bottom: 0;
+}
+
 </style>
 

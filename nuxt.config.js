@@ -76,6 +76,8 @@ module.exports = {
     TWITTER_API_SECRET_KEY,
     AWS_API_KEY,
     AWS_SECRET_KEY,
+    ownerAccountUrl: process.env.OWNER_ACCOUNT_URL,
+    ownerAccountName: process.env.OWNER_ACCOUNT_NAME,
     baseURL: process.env.BASE_URL || 'http://127.0.0.1:3000',
     callbackURL: process.env.CALLBACK_URL || 'http://127.0.0.1:3000/callback',
     yamagenApiBaseURL: process.env.YAMAGEN_API_URL || 'http://127.0.0.1:8080'
