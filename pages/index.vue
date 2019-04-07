@@ -4,19 +4,6 @@
       grid-list-xl
       align-center
     >
-      <div class="main">
-        <div v-if="$store.state.user">
-          <div class="text-xs-center">
-          <v-btn
-            round
-            color="blue-grey"
-            class="white--text"
-            @click="openModal($store.state.user)"
-          >山のツイート
-          </v-btn>
-          </div>
-        </div>        
-      </div>
       <div class="infinite-scroll">
         <v-layout v-for="(word, index) in words" :key="index">
           <v-card

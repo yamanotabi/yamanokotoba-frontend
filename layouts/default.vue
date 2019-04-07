@@ -3,6 +3,16 @@
     <div class="header">
       <div class="display">
         <div v-if="$store.state.user">
+          <div class="text-xs-center">
+          <v-btn
+            round
+            color="blue-grey"
+            class="white--text"
+            @click="openModal($store.state.user)"
+          >山のツイート
+          </v-btn>
+          </div>
+
           <v-img
             class="elevation-6"
             v-bind:src=$store.state.user._json.profile_image_url_https
@@ -48,14 +58,22 @@
     </div>
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
     <nuxt/>
+    <tweetModal :user="userInfo" v-if="showModal" @close="closeModal"></tweetModal>
   </v-app>
 </template>
 
 <script>
   import 'vuetify/dist/vuetify.min.css'
+  import tweetModal from '~/components/TweetModal.vue'
+
   export default {
+    components: {
+      tweetModal
+    },
+    
     data () {
       return {
+        showModal: false,
         drawer: null,
         logoutUrl: process.env.baseURL + "/server/logout",
         loginUrl: process.env.baseURL + "/server/auth/twitter",
@@ -64,6 +82,13 @@
       }
     },
     methods: {
+      openModal(user) {
+        this.userInfo = user;
+          this.showModal = true;
+      },
+      closeModal() {
+          this.showModal = false;
+      },
       handleClick() {
         
       }
@@ -145,12 +170,18 @@ html {
 .display {
   margin-top: 1%;  
   margin-left: auto;
-  width: 230px;
+  width: 380px;
 }
 
 .menu_icon {
   margin-left: 5%;
   margin-top: 2%;  
+}
+
+.text-xs-center {
+    text-align: center!important;
+    display: inline-block;
+    vertical-align: middle;  
 }
 
 .theme--light.v-input:not(.v-input--is-disabled) input, .theme--light.v-input:not(.v-input--is-disabled) textarea {
