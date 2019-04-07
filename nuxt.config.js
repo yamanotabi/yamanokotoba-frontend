@@ -5,6 +5,7 @@ const { AWS_API_KEY } = process.env.AWS_API_KEY
 const { AWS_SECRET_KEY } = process.env.AWS_SECRET_KEY
 
 module.exports = {
+  mode: 'universal',
   /*
   ** Headers of the page
   */

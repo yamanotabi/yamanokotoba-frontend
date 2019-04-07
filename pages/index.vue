@@ -91,6 +91,19 @@ export default {
     }
   },
 
+  head() {
+    return {
+      title: '山のことば | 山に関するつぶやきを1枚の写真とともに',
+      meta: [
+        { hid: 'card', name: 'twitter:card', content: "summary_large_image" },
+        { hid: 'site', name: 'twitter:site', content: "@shiki_developer" },
+        { hid: 'title', name: 'twitter:title', content: "山の名言"},
+        { hid: 'description', name: 'twitter:description', content: "他の名言を見る" },
+        { hid: 'image', name: 'twitter:image', content: "https://yamabluesky.files.wordpress.com/2019/03/top-background-image-min-min-min.jpg" }
+      ]
+    }
+  },
+
   async asyncData() {
     // if (process.client) {
     //   window.addEventListener('scroll', this.handleScroll)
