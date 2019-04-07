@@ -8,21 +8,21 @@ module.exports = {
   /*
   ** Headers of the page
   */
- head: {
-  script: [
-    {
-      async: true
-    }
-  ],
-  title: '山のことば | 山に関するつぶやきを1枚の写真とともに',
-  titleTemplate: '%s | 山のことば',
-  meta: [
-    { charset: 'utf-8' },
-    { hid: 'card', name: 'twitter:card', content: "summary_large_image" },
-    { hid: 'site', name: 'twitter:site', content: "@shiki_developer" },
-    { hid: 'image', name: 'twitter:image', content: "https://s3-ap-northeast-1.amazonaws.com/yamatabi-production/site/site.jpg" }
-  ]
- },
+//  head: {
+//   script: [
+//     {
+//       async: true
+//     }
+//   ],
+//   title: '山のことば | 山に関するつぶやきを1枚の写真とともに',
+//   titleTemplate: '%s | 山のことば',
+//   meta: [
+//     { charset: 'utf-8' },
+//     { hid: 'card', name: 'twitter:card', content: "summary_large_image" },
+//     { hid: 'site', name: 'twitter:site', content: "@shiki_developer" },
+//     { hid: 'image', name: 'twitter:image', content: "https://s3-ap-northeast-1.amazonaws.com/yamatabi-production/site/site.jpg" }
+//   ]
+//  },
 
   modules: [
     '@nuxtjs/axios'
