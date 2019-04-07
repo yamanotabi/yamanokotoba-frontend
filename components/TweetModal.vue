@@ -61,7 +61,7 @@ export default {
             params.append("access_token", this.user.access_token)
             params.append('access_token_secret', this.user.token_secret)
             params.append('text', this.text)
-            params.append('user_image_url', this.user._json.profile_image_url)
+            params.append('user_image_url', this.user._json.profile_image_url_https)
             params.append('user_name', this.user.displayName)
 
             const response = await axios.post(process.env.yamagenApiBaseURL + "/api/v1/words", params, config)

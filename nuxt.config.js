@@ -8,16 +8,16 @@ module.exports = {
   /*
   ** Headers of the page
   */
- head: {
-  title: '山のことば | 山に関するつぶやきを1枚の写真とともに',
-  titleTemplate: '%s | 山のことば',
-  meta: [
-    { charset: 'utf-8' },
-    { hid: 'card', name: 'twitter:card', content: "summary_large_image" },
-    { hid: 'site', name: 'twitter:site', content: "@shiki_developer" },
-    { hid: 'image', name: 'twitter:image', content: "https://yamabluesky.files.wordpress.com/2019/03/top-background-image-min-min-min.jpg" }
-  ]
- },
+//  head: {
+//   title: '山のことば | 山に関するつぶやきを1枚の写真とともに',
+//   titleTemplate: '%s | 山のことば',
+//   meta: [
+//     { charset: 'utf-8' },
+//     { hid: 'card', name: 'twitter:card', content: "summary_large_image" },
+//     { hid: 'site', name: 'twitter:site', content: "@shiki_developer" },
+//     { hid: 'image', name: 'twitter:image', content: "https://yamabluesky.files.wordpress.com/2019/03/top-background-image-min-min-min.jpg" }
+//   ]
+//  },
 
   modules: [
     '@nuxtjs/axios'
