@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <div class="header">
-      <div class="auth_button">
+      <div class="display">
         <div v-if="$store.state.user">
           <v-img
             class="elevation-6"
@@ -142,10 +142,10 @@ html {
   text-align: center;
 }
 
-.auth_button {
+.display {
   margin-top: 1%;  
   margin-left: auto;
-  width: 300px;
+  width: 230px;
 }
 
 .menu_icon {
