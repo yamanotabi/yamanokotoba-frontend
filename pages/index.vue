@@ -6,7 +6,6 @@
     >
       <div class="main">
         <div v-if="$store.state.user">
-          <p class="title"> Yama Lover is : {{ $store.state.user.displayName }} .</p>
           <div class="text-xs-center">
           <v-btn
             round
