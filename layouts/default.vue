@@ -144,7 +144,6 @@ html {
 .menu_icon {
   margin-left: 5%;
   margin-top: 2%;
-  position: fixed;
 }
 
 .elevation-6 {
