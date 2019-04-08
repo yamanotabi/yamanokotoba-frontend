@@ -3,16 +3,6 @@
     <div class="header">
       <div class="display">
         <div v-if="$store.state.user">
-          <div class="text-xs-center">
-          <v-btn
-            round
-            color="blue-grey"
-            class="white--text"
-            @click="openModal($store.state.user)"
-          >山のツイート
-          </v-btn>
-          </div>
-
           <v-img
             class="elevation-6"
             v-bind:src=$store.state.user._json.profile_image_url_https
@@ -48,19 +38,17 @@
     </div>
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
     <nuxt/>
-    <tweetModal :user="userInfo" v-if="showModal" @close="closeModal"></tweetModal>
+    <div class="footer">
+      @2019 <a v-bind:href="this.ownerAccount.url" style="color: black">{{ this.ownerAccount.name }}</a> All Rights Reserved.
+    </div>
+
   </v-app>
 </template>
 
 <script>
   import 'vuetify/dist/vuetify.min.css'
-  import tweetModal from '~/components/TweetModal.vue'
 
   export default {
-    components: {
-      tweetModal
-    },
-    
     data () {
       return {
         showModal: false,
@@ -69,20 +57,17 @@
         loginUrl: process.env.baseURL + "/server/auth/twitter",
         homeUrl: "/",
         aboutUrl: "/about",
+        ownerAccount: {
+          url: process.env.ownerAccountUrl,
+          name: process.env.ownerAccountName 
+        }
       }
     },
     methods: {
-      openModal(user) {
-        this.userInfo = user;
-          this.showModal = true;
-      },
-      closeModal() {
-          this.showModal = false;
-      },
       handleClick() {
         
       }
-    }
+    }    
   }
 </script>
 
@@ -110,14 +95,6 @@ html {
   color: #3b8070;
   text-decoration: none;
   padding: 10px 30px;
-}
-
-.elevation-6 {
-  display: inline-block !important;
-  vertical-align: middle;
-  margin-right: 6px;
-  border-radius: 40px;
-  width: 40px;
 }
 
 .button--green:hover {

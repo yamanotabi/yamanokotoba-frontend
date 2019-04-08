@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <v-container
       grid-list-xl
       align-center
@@ -40,10 +40,11 @@
           </v-card>
         </v-layout>
       </div>
-      <div class="footer">
-        @2019 <a v-bind:href="this.ownerAccount.url" style="color: black">{{ this.ownerAccount.name }}</a> All Rights Reserved.
+      <div class="add_button">
+        <v-btn fab @click="openModal($store.state.user)" dark color="blue-grey">
+          <v-icon dark>edit</v-icon>
+        </v-btn>
       </div>
-
       <!-- <div v-if="this.scroll">
         <no-ssr>
           <infinite-loading 
@@ -72,11 +73,7 @@ export default {
       showModal: false,
       count: 1,
       words: [],
-      userInfo: null,
-      ownerAccount: {
-        url: process.env.ownerAccountUrl,
-        name: process.env.ownerAccountName 
-      }
+      userInfo: null
     }
   },
 
@@ -145,11 +142,6 @@ export default {
   letter-spacing: 1px;
 }
 
-.main {
-  margin-bottom: 5%;
-  text-align: center;
-}
-
 .v-card__actions {
   position: absolute;
   bottom: 0;
@@ -175,6 +167,13 @@ a {
   text-decoration:none;
 }
 
+.add_button {
+  border-radius: 40px;
+  width: 100px;
+  position: fixed;
+  margin-left: 66%;
+  bottom: 30px;
+}
 /* .v-responsive__content {
   background-color: rgba(0,0,0,0.3);
 }
