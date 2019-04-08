@@ -2,12 +2,12 @@
   <v-app id="inspire">
     <div class="header">
       <div class="display">
-        <div v-if="$store.state.user">
+        <div class="user_info" v-if="$store.state.user">
+          <h4 class="displayName">{{$store.state.user.displayName}}</h4>
           <v-img
             class="elevation-6"
             v-bind:src=$store.state.user._json.profile_image_url_https
           ></v-img>
-          <h4 class="displayName">{{$store.state.user.displayName}}</h4>
         </div>
       </div>
       <v-layout wrap>
@@ -104,6 +104,7 @@ html {
 
 .displayName {
   display: inline-block;
+  vertical-align: middle;
   color: #35495e;
   padding: 10px;
 }
@@ -135,14 +136,22 @@ html {
 }
 
 .display {
-  margin-top: 1%;  
+  margin-top: 3%;  
   margin-left: auto;
-  width: 380px;
+  width: 210px;
 }
 
 .menu_icon {
   margin-left: 5%;
   margin-top: 2%;  
+}
+
+.elevation-6 {
+  display: inline-block !important;
+  vertical-align: middle;
+  margin-right: 6px;
+  border-radius: 40px;
+  width: 40px;
 }
 
 .text-xs-center {
