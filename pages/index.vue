@@ -40,7 +40,7 @@
           </v-card>
         </v-layout>
       </div>
-      <div class="add_button">
+      <div class="add_button" v-if="$store.state.user">
         <v-btn fab @click="openModal($store.state.user)" dark color="blue-grey">
           <v-icon dark>edit</v-icon>
         </v-btn>

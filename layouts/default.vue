@@ -25,7 +25,7 @@
               <v-list-tile-content>LOGOUT</v-list-tile-content>
             </v-list-tile>
             <v-list-tile v-else @click="handleClick" v-bind:href="this.loginUrl">
-              <v-list-tile-content>LOGIN</v-list-tile-content>
+              <v-list-tile-content>LOGIN / SIGN UP</v-list-tile-content>
             </v-list-tile>
             <v-list-tile @click="handleClick" v-bind:to="this.aboutUrl">
               <v-list-tile-content>ABOUT</v-list-tile-content>
