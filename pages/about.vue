@@ -43,10 +43,7 @@ export default {
 <style>
 .about {
   text-align: center;
-  width: 100%;
-  height: 100%;
-  max-width: 600;
-  margin: auto;
+  padding: 15px;
   font-size: 18px;
 }
 
