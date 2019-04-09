@@ -172,7 +172,7 @@ export default {
     height: auto;
     margin-left: auto;
     margin-right: auto;    
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 .tweet-button {
