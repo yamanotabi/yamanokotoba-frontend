@@ -44,6 +44,7 @@ export default {
 .about {
   text-align: center;
   padding: 15px;
+  margin: auto;
   font-size: 18px;
 }
 
