@@ -1,9 +1,6 @@
 <template>
   <div class="main">
-    <v-container
-      grid-list-xl
-      align-center
-    >
+    <v-container>
       <div class="infinite-scroll">
         <v-layout v-for="(word, index) in words" :key="index">
           <v-card
@@ -148,7 +145,7 @@ export default {
 }
 
 .headline.font-weight-bold {
-  color: white;
+  padding: 6px;
 }
 
 .tweet_icon {

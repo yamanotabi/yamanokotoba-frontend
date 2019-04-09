@@ -1,26 +1,28 @@
 <template>
-  <transition name="modal" appear>
-    <div class="modal modal-overlay" @click.self="$emit('close')">
-      <div class="modal-window">
-        <v-layout>
-          <div class="modal-content" :style="{ backgroundImage: 'url(' + imageObject + ')'}">
-            <div class="form-area">
-              <v-textarea class="headline font-weight-bold" color="white" label="山のつぶやき" v-model="text" ></v-textarea>
-            </div>
-            <p class ="error-message" v-if="message != null">{{ message }}</p>
-            <div class="tweet-button">
-              <v-btn round color="blue-grey" class="white--text" @click="tweet">山のツイート</v-btn>
-            </div>
-            <div class="input-file">
-              <label for="file_photo">
-                <input type="file" @change="onFileChange" style="display:none;" id="file_photo">
-              </label>
-            </div>
-          </div>
-        </v-layout>
+  <v-container>
+    <transition name="modal" appear>
+      <div class="modal modal-overlay" @click.self="$emit('close')">
+        <div class="modal-window">
+          <!-- <v-layout> -->
+            <v-img class="modal-content" :style="{ backgroundImage: 'url(' + imageObject + ')'}">
+              <div class="form-area">
+                <v-textarea class="headline font-weight-bold" color="white" label="山のつぶやき" v-model="text" ></v-textarea>
+              </div>
+              <p class ="error-message" v-if="message != null">{{ message }}</p>
+              <div class="tweet-button">
+                <v-btn round color="blue-grey" class="white--text" @click="tweet">山のツイート</v-btn>
+              </div>
+              <div class="input-file">
+                <label for="file_photo">
+                  <input type="file" @change="onFileChange" style="display:none;" id="file_photo">
+                </label>
+              </div>
+            </v-img>
+          <!-- </v-layout> -->
+        </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </v-container>
 </template>
 
 <script>
@@ -41,7 +43,7 @@ export default {
     },
     mounted() {
         // TODO: get from S3
-        const defaultImageUrl = "https://yamabluesky.files.wordpress.com/2019/03/top-background-image-min-min-min.jpg"
+        const defaultImageUrl = "https://s3-ap-northeast-1.amazonaws.com/yamatabi-production/site/site.jpg"
         this.defaultImageUrl = defaultImageUrl
         this.imageObject = defaultImageUrl
     },
@@ -118,10 +120,10 @@ export default {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
+    padding: 7px;
   }
 
   &-window {
-    background: #fff;
     border-radius: 20px;
     overflow: hidden;
     margin auto;
@@ -129,8 +131,7 @@ export default {
 
   &-content {
     position: relative;
-    width: 600px;
-    height 400px;
+    width: 450px;
     background-position:center top;
     background-repeat:no-repeat;
     -moz-background-size:cover;
@@ -168,7 +169,6 @@ export default {
 }
 
 .form-area {
-    width: 500px;
     height: auto;
     margin-left: auto;
     margin-right: auto;    
@@ -178,7 +178,6 @@ export default {
 .tweet-button {
     display: inline-block;
     vertical-align: middle;
-    margin-left: 7%;
     margin-top: 5px;
 }
 
