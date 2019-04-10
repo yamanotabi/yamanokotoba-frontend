@@ -39,7 +39,7 @@ module.exports = {
   ],
 
   head: {
-    title: '山の名言',
+    title: 'ヤマノコトバ | 山のつぶやきを1枚の写真とともに',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
