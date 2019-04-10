@@ -53,6 +53,10 @@ export default {
   methods: {
     // tweet
     async tweet() {
+      if (this.text == null) {
+        this.message = "言葉を入力してください"
+        return;
+      }
       const config = {
           headers: { 'content-type': 'application/json' }
       }
