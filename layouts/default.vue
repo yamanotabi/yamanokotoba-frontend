@@ -33,15 +33,23 @@
           </v-list>
         </v-navigation-drawer>
       </v-layout>
+      <div class="share_button">
+        <div class="twitter_share">
+          <a href="https://twitter.com/intent/tweet?text=山のことば | 山のつぶやきを写真とともに&url=https://yamagen.herokuapp.com&hashtags=山のことば" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link">
+            <div class="tweet_button">
+              <img class="tweet_icon" src="../assets/Twitter_Social_Icon_Circle_Color.png" style="width: 38px;" />
+            </div>
+          </a>
+        </div>
+      </div>
       <h1 class="app_title">山のことば</h1>
       <h2 class="subtitle">- 山のつぶやきを写真とともに -</h2>
     </div>
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
     <nuxt/>
     <div class="footer">
-      @2019 <a v-bind:href="this.ownerAccount.url" style="color: black">{{ this.ownerAccount.name }}</a> All Rights Reserved.
+      @2019 <a v-bind:href="this.ownerAccount.url" style="color: black">{{ this.ownerAccount.name }}</a> All Rights Reserved. / <router-link to="/agreement" style="color: black;">利用規約</router-link>
     </div>
-
   </v-app>
 </template>
 
@@ -57,6 +65,7 @@
         loginUrl: process.env.baseURL + "/server/auth/twitter",
         homeUrl: "/",
         aboutUrl: "/about",
+        agreementUrl: "/agreement",
         ownerAccount: {
           url: process.env.ownerAccountUrl,
           name: process.env.ownerAccountName 
@@ -152,6 +161,17 @@
 .theme--light.v-input:not(.v-input--is-disabled) input, .theme--light.v-input:not(.v-input--is-disabled) textarea {
   color: white !important;
   line-height: 28px;
+}
+
+.share_button {
+  margin-top: 10px;
+}
+
+.twitter_share {
+  margin-top: 10%;
+  margin-left: 5%;
+  position: fixed;
+  z-index: 1;
 }
 
 .footer {

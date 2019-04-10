@@ -23,7 +23,6 @@
                       <h3 class="tweet_text">twitterに投稿</h3>
                     </div>
                   </a>
-
                   <v-list-tile-content>
                   </v-list-tile-content>
                   <v-layout
@@ -162,10 +161,7 @@ a {
   margin-left: 66%;
   bottom: 30px;
 }
-/* .v-responsive__content {
-  background-color: rgba(0,0,0,0.3);
-}
- */
+
 .theme--light.v-card {
   margin-bottom: 90px;
   max-width: 600;
@@ -185,6 +181,5 @@ a {
   position: relative;
   bottom: 0;
 }
-
 </style>
 
