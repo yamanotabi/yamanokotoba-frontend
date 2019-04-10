@@ -42,8 +42,8 @@
           </a>
         </div>
       </div>
-      <h1 class="app_title">山のことば</h1>
-      <h2 class="subtitle">- 山のつぶやきを写真とともに -</h2>
+      <h1 class="app_title">ヤマノコトバ</h1>
+      <h2 class="subtitle">- 山のつぶやきを1枚の写真とともに -</h2>
     </div>
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
     <nuxt/>

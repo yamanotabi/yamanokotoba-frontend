@@ -75,12 +75,12 @@ export default {
 
   head() {
     return {
-      title: '山のことば | 山のつぶやきを写真とともに',
+      title: 'ヤマノコトバ | 山のつぶやきを1枚の写真とともに',
       meta: [
         { name: 'twitter:card', content: "summary_large_image" },
         { name: 'twitter:site', content: "@shiki_developer" },
-        { name: 'twitter:title', content: "山の名言"},
-        { name: 'twitter:description', content: "他の名言を見る" },
+        { name: 'twitter:title', content: "ヤマノコトバ"},
+        { name: 'twitter:description', content: "他のカードを全て見る" },
         { name: 'twitter:image', content: "https://s3-ap-northeast-1.amazonaws.com/yamatabi-production/site/site.jpg" }
       ]
     }
@@ -171,14 +171,6 @@ a {
 
 .user_name {
   color: white;
-}
-
-.footer {
-  text-align: center;
-  height: 60px;
-  padding: 10px 20px 30px 20px;
-  position: relative;
-  bottom: 0;
 }
 </style>
 
