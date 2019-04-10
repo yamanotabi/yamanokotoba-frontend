@@ -35,7 +35,7 @@
       </v-layout>
       <div class="share_button">
         <div class="twitter_share">
-          <a href="https://twitter.com/intent/tweet?text=山のことば | 山のつぶやきを写真とともに&url=https://yamagen.herokuapp.com&hashtags=山のことば" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link">
+          <a href="https://twitter.com/intent/tweet?text=ヤマノコトバ | 山のつぶやきを1枚の写真とともに&url=https://yamagen.herokuapp.com&hashtags=ヤマノコトバ" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link">
             <div class="tweet_button">
               <img class="tweet_icon" src="../assets/Twitter_Social_Icon_Circle_Color.png" style="width: 38px;" />
             </div>

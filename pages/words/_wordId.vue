@@ -61,7 +61,7 @@ export default {
             meta: [
                 { hid: 'card', name: 'twitter:card', content: "summary_large_image" },
                 { hid: 'site', name: 'twitter:site', content: `${this.$store.state.word.word.user_name}` },
-                { hid: 'title', name: 'twitter:title', content: "ヤマノコトバ"},
+                { hid: 'title', name: 'twitter:title', content: "ヤマノコトバ | 山のつぶやきを1枚の写真とともに"},
                 { hid: 'description', name: 'twitter:description', content: "他のカードを全て見る" },
                 { hid: 'image', name: 'twitter:image', content: `${this.$store.state.word.word.background_image_url}` }
             ]

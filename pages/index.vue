@@ -79,7 +79,7 @@ export default {
       meta: [
         { name: 'twitter:card', content: "summary_large_image" },
         { name: 'twitter:site', content: "@shiki_developer" },
-        { name: 'twitter:title', content: "ヤマノコトバ"},
+        { name: 'twitter:title', content: "ヤマノコトバ | 山のつぶやきを1枚の写真とともに"},
         { name: 'twitter:description', content: "他のカードを全て見る" },
         { name: 'twitter:image', content: "https://s3-ap-northeast-1.amazonaws.com/yamatabi-production/site/site.jpg" }
       ]
