@@ -166,7 +166,6 @@ a {
   margin-bottom: 90px;
   max-width: 600;
   width: 600px;
-  max-height: 400px;
   border-radius: 20px;
 }
 
