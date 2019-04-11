@@ -78,7 +78,7 @@ export default {
   },
 
   async asyncData({ params }) {
-    const response = await axios.get(process.env.baseURL + "/server/users/" + params.userId + "/words")
+    const response = await axios.get(process.env.baseURL + "/server/users/" + params.id + "/words")
     return { words: response.data.words }
   },
   methods: {

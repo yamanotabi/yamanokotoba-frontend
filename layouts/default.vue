@@ -3,7 +3,7 @@
     <div class="header">
       <div class="display">
         <div class="user_info" v-if="$store.state.user">
-          <nuxt-link :to="{ path: 'users/'+ $store.state.user.id }" class="button">
+          <nuxt-link :to="{ name: 'users-id', params: {id: $store.state.user.id}}" class="button">
           <h4 class="displayName">{{$store.state.user.displayName}}</h4>
           <v-img
             class="elevation-6"

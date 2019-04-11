@@ -52,7 +52,7 @@ export default {
     },
 
     async fetch ({ store, params }) {
-        const response  = await axios.get(process.env.baseURL + "/server/words/" + params.wordId)
+        const response  = await axios.get(process.env.baseURL + "/server/words/" + params.id)
         store.commit('setWord', response.data)
     },
 
