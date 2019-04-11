@@ -70,6 +70,7 @@ export default {
       params.append('text', this.text)
       params.append('user_image_url', this.user._json.profile_image_url_https)
       params.append('user_name', this.user.displayName)
+      params.append('user_id', this.user.id)
       params.append('tweet_text', "https://twitter.com/intent/tweet?text=" + this.text.slice(0, 5)  + "...&url=https://yamagen.herokuapp.com/words/" + id + "&hashtags=ヤマノコトバ")
 
       const response = await axios.post(process.env.yamagenApiBaseURL + "/api/v1/words", params, config)

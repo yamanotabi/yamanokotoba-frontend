@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div>
     <v-container>
       <div class="infinite-scroll">
         <v-layout v-for="(word, index) in words" :key="index">
@@ -19,7 +19,7 @@
                 <v-list-tile class="grow">
                   <a v-bind:href="word.tweet_text" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link">
                     <div class="tweet_button">
-                      <img class="tweet_icon" src="../assets/Twitter_Social_Icon_Circle_White.png" style="width: 40px;" />
+                      <img class="tweet_icon" src="../../assets/Twitter_Social_Icon_Circle_White.png" style="width: 40px;" />
                       <h3 class="tweet_text">twitterに投稿</h3>
                     </div>
                   </a>
@@ -41,17 +41,8 @@
           <v-icon dark>edit</v-icon>
         </v-btn>
       </div>
-      <!-- <div v-if="this.scroll">
-        <no-ssr>
-          <infinite-loading 
-            ref="infiniteLoading" 
-            spinner="spiral"
-            @infinite="infiniteHandler">
-          </infinite-loading>
-        </no-ssr>
-      </div> -->
       <tweetModal :user="userInfo" v-if="showModal" @close="closeModal"></tweetModal>
-    </v-container>
+    </v-container>    
   </div>
 </template>
 
@@ -86,16 +77,9 @@ export default {
     }
   },
 
-  async asyncData() {
-    // if (process.client) {
-    //   window.addEventListener('scroll', this.handleScroll)
-    // }
-    const response = await axios.get(process.env.baseURL + "/server/words")
+  async asyncData({ params }) {
+    const response = await axios.get(process.env.baseURL + "/server/users/" + params.userId + "/words")
     return { words: response.data.words }
-    // this.list = response.data.words
-    // for (var i = 0; i < 3; i++) {
-    //   this.words.push(response.data.words[i])
-    // }
   },
   methods: {
     openModal(user) {
@@ -169,4 +153,3 @@ a {
   border-radius: 20px;
 }
 </style>
-

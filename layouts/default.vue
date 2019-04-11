@@ -3,11 +3,14 @@
     <div class="header">
       <div class="display">
         <div class="user_info" v-if="$store.state.user">
+          <nuxt-link :to="{ path: 'users/'+ $store.state.user.id }" class="button">
           <h4 class="displayName">{{$store.state.user.displayName}}</h4>
           <v-img
             class="elevation-6"
             v-bind:src=$store.state.user._json.profile_image_url_https
-          ></v-img>
+          >
+          </v-img>
+          </nuxt-link>
         </div>
       </div>
       <v-layout wrap>

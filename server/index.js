@@ -6,6 +6,7 @@ const axios = require('axios');
 
 const API_BASE_URL = process.env.YAMAGEN_API_URL
 const WORD_API = process.env.V1 + "/words/"
+const USER_API = process.env.V1 + "/users/"
 
 const TWITTER_API_KEY = process.env.TWITTER_API_KEY
 const TWITTER_API_SECRET_KEY = process.env.TWITTER_API_SECRET_KEY
@@ -78,6 +79,12 @@ app.get('/words/:id', wrap(async (req, res) => {
   let requestURL = API_BASE_URL + WORD_API + req.params.id
   const response = await axios.get(requestURL)
   res.status(200).json({ word: response.data })
+}));
+
+app.get('/users/:id/words', wrap(async (req, res) => {
+  let requestURL = API_BASE_URL + USER_API + req.params.id + "/words"
+  const response = await axios.get(requestURL)
+  res.status(200).json({ words: response.data })
 }));
 
 // twitter

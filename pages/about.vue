@@ -32,7 +32,7 @@ export default {
 
   head() {
     return {
-      title: '山のことば | 山のつぶやきを写真とともに',
+      title: 'ヤマノコトバ | 山のつぶやきを1枚の写真とともに',
       meta: [
         { name: 'twitter:card', content: "summary_large_image" },
         { name: 'twitter:site', content: "@shiki_developer" },
