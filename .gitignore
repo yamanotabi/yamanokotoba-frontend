@@ -12,4 +12,4 @@ dist
 
 .env
 
-*yaml
+secret.yaml
