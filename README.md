@@ -1,4 +1,4 @@
-# yamagen-frontend
+# yamanokotoba-frontend
 
 ## Build Setup
 
